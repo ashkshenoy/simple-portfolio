@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-[#0B0B0D] text-slate-200;
+}
+html {
+  scroll-behavior: smooth;
+}
+/* Typography smoothing */
+body {
+  background: linear-gradient(
+    to bottom,
+    #1d1130 0%,
+    #11111a 30%,
+    #11111a 70%,
+    #1d1130 100%
+  );
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 8.5rem } /* adjust to text length */
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+
+
