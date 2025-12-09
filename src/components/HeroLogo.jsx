@@ -1,0 +1,71 @@
+import { motion } from "framer-motion";
+
+export default function HeroLogo() {
+  return (
+    <div className="flex items-center justify-center lg:justify-end px-6">
+  <motion.div
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.9, ease: "easeOut" }}
+    className="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] lg:max-w-[560px] xl:max-w-[620px]"
+  >
+        {/* SVG version so we can animate the X stroke */}
+        <motion.svg
+  width="560"
+  height="560"
+  viewBox="0 0 560 560"
+  fill="none"
+  className="drop-shadow-2xl"
+  initial="hidden"
+  animate="visible"
+>
+  {/* Small r – starts a bit left, then tucks perfectly under the X arm on hover */}
+  <motion.text
+    x="90"           // ← was 120, now further left for better spacing
+    y="330"
+    fontSize="300"
+    fontWeight="900"
+    fill="#ffffff"
+    fontFamily="ui-sans-serif, system-ui, sans-serif"
+    variants={{
+      hidden: { opacity: 0 },
+      visible: { opacity: 1 },
+      hover: { x: 88, y: 52, transition: { duration: 0.45, ease: "easeOut" } }
+    }}
+  >
+    r
+  </motion.text>
+
+  {/* Big X – moved ~45px to the right */}
+  <motion.path
+    d="M 205 40 L 445 440 M 445 40 L 205 440"
+   // ← shifted right from 160→205
+    stroke="#ffffff"
+    strokeWidth="60"
+    strokeLinecap="round"
+    initial={{ pathLength: 0 }}
+    animate={{ pathLength: 1 }}
+    transition={{ duration: 1.4, ease: "easeInOut" }}
+    variants={{
+      hover: { rotate: 6, transition: { duration: 0.5, ease: "easeOut" } }
+    }}
+   
+  />
+</motion.svg>
+
+        {/* Subtle breathing glow (only on the X) */}
+        
+
+        {/* Hover glow boost */}
+        
+      </motion.div>
+
+      {/* Make the whole thing interactive */}
+      <motion.div
+        className="absolute inset-0"
+        whileHover="hover"
+        style={{ cursor: "default" }}
+      />
+    </div>
+  );
+}

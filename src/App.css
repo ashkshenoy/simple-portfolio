@@ -1,34 +1,60 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
   color-scheme: dark;
 }
 
-body {
-  @apply bg-[#0B0B0D] text-slate-200;
-}
 html {
   scroll-behavior: smooth;
 }
-/* Typography smoothing */
+
+/* MAIN BACKGROUND – ultra-dark with a barely-there purple midnight glow */
 body {
-  background: linear-gradient(
-    to bottom,
-    #1d1130 0%,
-    #11111a 30%,
-    #11111a 70%,
-    #1d1130 100%
-  );
-}
-@keyframes typing {
-  from { width: 0 }
-  to { width: 8.5rem } /* adjust to text length */
+  @apply bg-[#0a0a0f] text-slate-200;
+  background: radial-gradient(circle at 50% 20%, #1a0f2e 0%, #0a0a0f 40%, #0a0a0f 100%),
+              radial-gradient(circle at 80% 80%, #2e0f1a 0%, transparent 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
-@keyframes blink {
-  50% { border-color: transparent }
+/* Optional: very subtle noise texture (makes it feel expensive) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
 }
 
+/* HERO-SPECIFIC override – make it pure black with a faint red-purple edge glow */
+#hero {
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(88, 0, 139, 0.12) 0%, transparent 50%),
+    #050507;
+}
 
+/* SMOOTH SECTION TRANSITIONS – subtle fade + parallax feel */
+section {
+  position: relative;
+  z-index: 1;
+}
 
+/* Optional: fade-in sections as you scroll (feels cinematic) */
+section > div {
+  opacity: 0;
+  animation: fadeInUp 1.2s forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Remove your old gradient and typing cursor if you’re not using them anymore */

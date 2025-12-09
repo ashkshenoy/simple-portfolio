@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import HeroLogo from "./components/HeroLogo.jsx";
+import TechItem from "./components/TechItem.jsx";
 
 
 
@@ -10,6 +14,7 @@ export default function App() {
     { id: 3, title: "Blog App", subtitle: "Python + AI features", thumbnail: "/images/blog.png" },
     { id: 4, title: "Minimal Boxing Coach", subtitle: "Practice Boxing", thumbnail: "/images/boxing.jpg" },
   ];
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
@@ -17,534 +22,516 @@ export default function App() {
 
       {/* NAV */}
       <div className="relative z-10">
-        <header className="py-6 border-b border-slate-800 backdrop-blur-sm bg-black/10">
+        <header className="fixed inset-x-0 top-0 z-50">
+          <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
 
+            {/* LOGO – tiny rX mark only on mobile, full text on desktop */}
+            <a href="#hero" className="flex items-center gap-3 group">
+              <img
+                src="images/rx.svg"       // ← use your clean black rX (40×40px version)
+                alt="Root Xperiments"
+                className="w-9 h-9 opacity-90 group-hover:opacity-100 transition"
+              />
+              <span className="hidden md:block text-white font-medium tracking-wide text-lg">
+                Root Xperiments
+              </span>
+            </a>
 
-          <div className="max-w-5xl mx-auto px-6 flex justify-between items-center">
-            <h1 className="font-semibold text-lg">Ash</h1>
-            <nav className="flex gap-6 text-sm text-slate-400">
-
-              <a href="#hero" className="hover:text-primary">Home</a>
-              <a href="#projects" className="hover:text-primary">Projects</a>
-              <a href="#contact" className="hover:text-primary">Contact</a>
-              <a href="#about" className="hover:text-primary">About</a>
+            {/* DESKTOP NAV – clean, minimal, red accent on hover/active */}
+            <nav className="hidden md:flex items-center gap-10 text-slate-400 font-medium">
+              {[
+                { href: "#about", label: "About" },
+                { href: "#tech", label: "Tech" },
+                { href: "#principles", label: "Principles" },   // ← updated
+                { href: "#projects", label: "Projects" },
+                { href: "#experience", label: "Proof" },        // ← renamed to match new section
+                { href: "#contact", label: "Contact" },
+              ].map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="relative hover:text-white transition after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-red-500 after:transition-all hover:after:w-full"
+                >
+                  {item.label}
+                </a>
+              ))}
             </nav>
-          </div>
-        </header>
 
+            {/* MOBILE MENU BUTTON */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="md:hidden text-white p-2"
+              aria-label="Toggle menu"
+            >
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d={open ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* MOBILE MENU – full bleed, slides down */}
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="md:hidden fixed inset-x-0 top-16 bg-[#0a0a0f]/95 backdrop-blur-xl border-t border-slate-800"
+              >
+                <div className="px-6 py-8 space-y-6 text-center text-lg font-medium">
+                  {["About", "Tech", "Principles", "Projects", "Proof", "Contact"].map((label) => (
+                    <a
+                      key={label}
+                      href={`#${label.toLowerCase() === "proof" ? "experience" : label.toLowerCase()}`}
+                      onClick={() => setOpen(false)}
+                      className="block text-slate-300 hover:text-white transition"
+                    >
+                      {label}
+                    </a>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </header>
         <main className="flex-1">
 
           {/* HERO */}
-          <section id="hero" className="relative py-28 md:py-40 overflow-hidden">
+          <section id="hero" className="relative py-28 md:py-40 lg:py-52 overflow-hidden bg-[#0a0a1f]">
 
-            {/* BACKGROUND stays the same */}
-            <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-
-              {/* DRIFTING CODE BLOCK */}
+            {/* Ultra-faint scrolling code texture – only on the left half */}
+            <div className="absolute inset-0 -z-10 pointer-events-none">
               <motion.pre
-                animate={{
-                  y: [0, -120, 0, 120, 0], // bounce up → down → up
-                }}
-                transition={{
-                  duration: 12,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute left-[8%] top-0
-                 text-purple-300/15 text-3xl md:text-5xl font-mono 
-                 blur-[1px] pointer-events-none select-none"
-                style={{ whiteSpace: "pre" }}
+                initial={{ y: "20%" }}
+                animate={{ y: ["-20%", "120%", "-20%"] }}
+                transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute left-0 md:left-[5%] top-64 text-purple-400/5 
+                 text-7xl md:text-8xl lg:text-[160px] font-mono leading-none blur-sm select-none"
               >
-                {`root.setup({ stability: true });\n`}
-                {`xperiments.push({ ai: true, fearless: true });`}
+                {`root.setup({ stability: true });
+xperiments.push({ ai: true, fearless: true });`}
               </motion.pre>
-
             </div>
 
+            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[80vh]">
 
+                {/* LEFT – Text side */}
+                <div className="flex flex-col justify-center space-y-10 lg:space-y-12 max-w-xl lg:max-w-2xl">
 
-            {/* GRID: 65% LEFT / 35% RIGHT */}
-            <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[65%_35%] gap-12 items-center">
-
-              {/* LEFT (65%) — main heading + subtext + CTA */}
-              <div className="text-center md:text-left relative z-10">
-
-                {/* MAIN HEADING */}
-                <motion.h2
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className="text-4xl md:text-6xl font-bold tracking-tight text-white flex items-center justify-center md:justify-start gap-3"
-                >
-                  Solid roots. Fearless experiments.
-
-                  {/* 🚀 ROCKET NEXT TO HEADLINE */}
+                  {/* Headline */}
                   <motion.div
-                    animate={{ y: [-6, 6, -6] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                    className="inline-block opacity-90"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7 }}
                   >
-                    <svg
-                      width="38"
-                      height="38"
-                      viewBox="0 0 60 60"
-                      fill="none"
-                      stroke="rgba(255,255,255,0.45)"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      {/* Rocket body */}
-                      <path d="M30 4 C22 12 20 22 20 30 a10 10 0 0 0 20 0 C40 22 38 12 30 4 Z" />
-
-                      {/* Window */}
-                      <circle cx="30" cy="22" r="4" fill="rgba(255,255,255,0.2)" />
-
-                      {/* Fins */}
-                      <path d="M20 32 L14 38 L22 36" />
-                      <path d="M40 32 L46 38 L38 36" />
-
-                      {/* 🔥 FLICKERING FLAME */}
-                      <motion.path
-                        d="M27 40 Q30 48 33 40"
-                        stroke="rgba(255,140,0,1)"
-                        strokeWidth="2"
-                        animate={{
-                          scaleY: [1, 1.3, 0.8, 1.2, 1],
-                          opacity: [0.8, 1, 0.6, 1, 0.9],
-                        }}
-                        transition={{
-                          duration: 0.25,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                        style={{ transformOrigin: "center bottom" }}
-                      />
-                    </svg>
+                    <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-none">
+                      Solid roots.<br />
+                      <span className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+                        Fearless experiments.
+                      </span>
+                    </h1>
                   </motion.div>
 
-                </motion.h2>
-
-                {/* SUBTEXT */}
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  className="mt-4 text-slate-300 text-lg md:text-xl max-w-xl"
-                >
-                  A stable core, experimenting at the edges with AI, creativity, and minimal design.
-                </motion.p>
-
-                {/* CTA */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1 }}
-                  className="mt-10"
-                >
-                  <a
-                    href="#projects"
-                    className="px-6 py-3 bg-primary text-white rounded-lg hover:opacity-80"
+                  {/* Subtext */}
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.7 }}
+                    className="text-lg md:text-xl text-slate-300 leading-relaxed tracking-wide"
                   >
-                    View Projects
-                  </a>
-                </motion.div>
+                    A stable core, experimenting at the edges with AI, creativity, and minimal design.
+                  </motion.p>
 
-              </div>
+                  {/* Buttons */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.7 }}
+                    className="flex flex-col sm:flex-row gap-4"
+                  >
+                    <a href="#projects" className="px-8 py-4 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-lg font-medium text-center">
+                      View Projects →
+                    </a>
+                    <a href="#latest" className="px-8 py-4 border border-slate-600 text-white rounded-lg hover:bg-white/10 transition text-lg font-medium text-center">
+                      Latest Experiment →
+                    </a>
+                  </motion.div>
 
+                </div>
 
+                {/* RIGHT – Massive rX mark + identity below */}
+                <div className="flex flex-col items-center justify-center lg:justify-end translate-y-[-40px] pr-8">
 
-              {/* RIGHT (35%) — photo + name + line */}
-              <div className="flex flex-col items-center md:items-start gap-6 relative z-10">
+                  {/* rX logo */}
+                  <HeroLogo />
 
-                {/* PHOTO */}
-                <img
-                  src="/images/Aashish-photo.jpg"
-                  alt="Aashish K Shenoy"
-                  className="w-32 h-44 md:w-56 md:h-64 object-cover rounded-[2.5rem] 
-                   shadow-[0_0_30px_rgba(0,0,0,0.35)] opacity-95"
-                />
+                  {/* Identity below logo */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="mt-4 text-center max-w-md"
+                  >
+                    <p className="text-l md:text-xl  tracking-wide text-slate-200 font-mono">
+                      <span className="identity-typing">
+                        ROOT XPERIMENTS — A MINIMAL SYSTEMS + AI LAB
+                      </span>
+                    </p>
+                  </motion.div>
 
-                {/* NAME + LINE */}
-                <div className="text-center md:text-left">
-                  <p className="text-slate-300 text-lg font-semibold">
-                    Aashish K Shenoy
-                  </p>
-                  <p className="text-slate-400 text-sm md:text-base tracking-wide mt-1">
-                    Root Xperiments
-                  </p>
-                  <p className="text-slate-500 text-sm md:text-base mt-2 max-w-xs">
-                    Rooted in stability. Driven by curiosity. Built with intention.
-                  </p>
                 </div>
 
               </div>
-
-            </div>
-
-          </section>
-
-          <section id="about" className="py-24 md:py-32 border-t border-slate-800">
-  <div className="max-w-4xl mx-auto px-6 text-center md:text-left">
-
-    <motion.h2
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="text-3xl md:text-4xl font-semibold text-white"
-    >
-      About Me
-    </motion.h2>
-
-    <motion.p
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-      className="mt-4 text-slate-400 text-lg leading-relaxed max-w-2xl"
-    >
-      I enjoy building minimal, intentional tools that solve real problems without unnecessary noise. 
-      Root Xperiments is my personal playground — a space where clarity meets curiosity, 
-      and where ideas evolve into systems with purpose.
-    </motion.p>
-
-  </div>
-</section>
-
-
-
-          <section id="tech" className="py-16 md:py-20">
-            <div className="max-w-6xl mx-auto px-6 text-center">
-
-              {/* TYPING EFFECT TITLE */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{
-                  opacity: 1,
-                  transition: { duration: 0.3 },
-                }}
-                onViewportEnter={() => {
-                  const el = document.getElementById("tech-title");
-                  el.classList.add("typing-animate");
-                }}
-                id="tech-title"
-                className="
-    text-slate-300 text-sm md:text-base uppercase tracking-widest mb-8
-    mx-auto overflow-hidden whitespace-nowrap border-r-2 border-slate-400
-    w-[8.5rem]  /* matches animation width */
-    font-normal  /* 🔥 matches the rest of the site */
-  "
-              >
-                Tech Stack
-              </motion.p>
-
-
-
-              {/* ICON ROW */}
-              <motion.div
-                className="flex flex-wrap justify-center gap-8 md:gap-12 opacity-90"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.8, duration: 1 }}
-              >
-                <img src="/tech/react.svg" className="w-10 h-10 md:w-12 md:h-12 opacity-70 hover:opacity-100 transition" />
-                <img src="/tech/node.svg" className="w-10 h-10 md:w-12 md:h-12 opacity-70 hover:opacity-100 transition" />
-                <img src="/tech/python.svg" className="w-10 h-10 md:w-12 md:h-12 opacity-70 hover:opacity-100 transition" />
-                <img src="/tech/java.svg" className="w-10 h-10 md:w-12 md:h-12 opacity-70 hover:opacity-100 transition" />
-                <img src="/tech/docker.svg" className="w-10 h-10 md:w-12 md:h-12 opacity-70 hover:opacity-100 transition" />
-                <img src="/tech/spring.svg" className="w-10 h-10 md:w-12 md:h-12 opacity-70 hover:opacity-100 transition" />
-                <img src="/tech/mysql.svg" className="w-10 h-10 md:w-12 md:h-12 opacity-70 hover:opacity-100 transition" />
-              </motion.div>
-
             </div>
           </section>
 
 
-<section id="skills" className="py-24 md:py-32 border-t border-slate-800">
-  <div className="max-w-6xl mx-auto px-6">
-
-    <motion.h2
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="text-3xl md:text-4xl font-semibold text-white text-center"
-    >
-      Skills & Capabilities
-    </motion.h2>
-
-    <div className="grid md:grid-cols-3 gap-10 mt-12">
-
-      <div className="bg-[#141415] p-6 rounded-2xl border border-slate-800">
-        <h3 className="text-white font-semibold text-xl">System Design</h3>
-        <p className="text-slate-400 mt-3 text-sm">
-          Designing modular architectures, microservices, scaling patterns, and clarity-focused backend systems.
-        </p>
-      </div>
-
-      <div className="bg-[#141415] p-6 rounded-2xl border border-slate-800">
-        <h3 className="text-white font-semibold text-xl">Frontend & UI</h3>
-        <p className="text-slate-400 mt-3 text-sm">
-          Clean, minimal interfaces with React, Tailwind, and thoughtful user experience.
-        </p>
-      </div>
-
-      <div className="bg-[#141415] p-6 rounded-2xl border border-slate-800">
-        <h3 className="text-white font-semibold text-xl">AI & Automation</h3>
-        <p className="text-slate-400 mt-3 text-sm">
-          Integrating AI features, automation workflows, summaries, tagging, and intelligent tooling.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<section id="services" className="py-24 md:py-32 border-t border-slate-800">
-  <div className="max-w-6xl mx-auto px-6 text-center">
-
-    <motion.h2
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="text-3xl md:text-4xl font-semibold text-white"
-    >
-      What I Do
-    </motion.h2>
-
-    <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
-      I help design, build, and refine digital experiences through clarity, structure, and experimentation.
-    </p>
-
-    <div className="grid md:grid-cols-3 gap-10 mt-12">
-
-      <div className="bg-[#141415] p-6 rounded-2xl border border-slate-800">
-        <h3 className="text-white font-semibold text-xl">Full-Stack Development</h3>
-        <p className="text-slate-400 mt-3 text-sm">
-          End-to-end apps with clean architecture, scalable APIs, and minimal design.
-        </p>
-      </div>
-
-      <div className="bg-[#141415] p-6 rounded-2xl border border-slate-800">
-        <h3 className="text-white font-semibold text-xl">System Architecture</h3>
-        <p className="text-slate-400 mt-3 text-sm">
-          Breaking down complexity into maintainable, modular, purposeful systems.
-        </p>
-      </div>
-
-      <div className="bg-[#141415] p-6 rounded-2xl border border-slate-800">
-        <h3 className="text-white font-semibold text-xl">AI-Driven Features</h3>
-        <p className="text-slate-400 mt-3 text-sm">
-          Summaries, recommendations, tagging, workflow automation — intelligent, practical additions to products.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<section id="process" className="py-24 md:py-32 border-t border-slate-800">
-  <div className="max-w-5xl mx-auto px-6">
-
-    <motion.h2
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="text-3xl md:text-4xl font-semibold text-white text-center"
-    >
-      How I Think
-    </motion.h2>
-
-    <div className="mt-12 space-y-10 text-slate-300 text-lg max-w-3xl mx-auto">
-
-      <p>
-        <span className="text-white font-semibold">Root →</span>  
-        Stability, clarity, foundation. Building systems that last.
-      </p>
-
-      <p>
-        <span className="text-white font-semibold">Experiment →</span>  
-        Curiosity, iteration, creativity. Exploring ideas without fear.
-      </p>
-
-      <p>
-        <span className="text-white font-semibold">Minimal →</span>  
-        Reducing noise. Keeping intention and cutting excess.
-      </p>
-
-      <p>
-        <span className="text-white font-semibold">Autonomous →</span>  
-        Making tools that work quietly, reliably, and independently.
-      </p>
-
-    </div>
-
-  </div>
-</section>
 
 
+          <section id="about" className="py-24 md:py-32 lg:py-40 border-t border-slate-800">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
 
+                {/* LEFT – Text */}
+                <div className="space-y-8 lg:space-y-10">
+                  <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.7 }}
+                    className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
+                  >
+                    I build things that<br />
+                    <span className="text-red-500">just work</span> —<br />
+                    then push them until they spark.
+                  </motion.h2>
 
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ delay: 0.2, duration: 0.7 }}
+                    className="text-lg md:text-xl text-slate-300 space-y-5 leading-relaxed"
+                  >
+                    <p>
+                      Root Xperiments is where rock-solid systems meet fearless experimentation.
+                      Minimal interfaces, bulletproof architecture, and occasional AI-powered madness.
+                    </p>
+                    <p>
+                      If you value clarity over flash, performance over bloat, and ideas that actually ship —
+                      we’ll probably get along.
+                    </p>
+                  </motion.div>
+                </div>
 
-          <section id="projects" className="py-28 max-w-7xl mx-auto px-6">
-
-            {/* Heading */}
-            <motion.h2
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="text-4xl font-semibold text-white mb-12 tracking-tight"
-            >
-              Projects
-            </motion.h2>
-
-            {/* Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-              {projects.map((p, index) => (
-
+                {/* RIGHT – Photo */}
                 <motion.div
-                  key={p.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="rounded-2xl overflow-hidden bg-[#141415] shadow-[0px_0px_15px_rgba(0,0,0,0.4)] 
-                       hover:shadow-[0px_0px_25px_rgba(227,52,47,0.25)] 
-                       hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: 0.3, duration: 0.9, ease: "easeOut" }}
+                  className="relative group"
                 >
-                  {/* Thumbnail */}
-                  <div className="relative w-full aspect-[4/3] overflow-hidden">
+                  <div className="aspect-[4/5] overflow-hidden rounded-xl border border-slate-800 shadow-2xl">
                     <img
-                      src={p.thumbnail}
-                      alt={p.title}
-                      className="w-full h-full object-cover transform transition duration-500 hover:scale-105"
+                      src="/images/me.jpg"               // ← put your photo here
+                      alt="Root Xperiments"
+                      className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0"
                     />
                   </div>
 
-                  {/* Text */}
-                  <div className="p-5">
-                    <h3 className="text-xl font-semibold text-white tracking-tight">
-                      {p.title}
-                    </h3>
-
-                    <p className="text-slate-400 text-sm mt-2 leading-relaxed">
-                      {p.subtitle}
-                    </p>
-
-                    {/* Optional tags */}
-                    {/* 
-              <div className="flex gap-2 mt-3 flex-wrap">
-                {p.tags?.map(tag => (
-                  <span key={tag} className="text-[11px] px-2 py-1 rounded bg-[#1c1c1e] text-slate-300 border border-slate-700">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              */}
+                  {/* Subtle rX watermark */}
+                  <div className="absolute bottom-5 right-5 text-white/8 text-7xl font-black pointer-events-none select-none">
+                    rX
                   </div>
+
+                  {/* Optional extra glow on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{
+                      background: "radial-gradient(circle at 30% 30%, rgba(239, 68, 68, 0.15), transparent 60%)",
+                    }}
+                  />
                 </motion.div>
 
-              ))}
+              </div>
             </div>
           </section>
 
-          
 
-          {/* EXPERIENCE / TIMELINE */}
-          <section id="experience" className="py-24 md:py-32 border-t border-slate-800">
-            <div className="max-w-5xl mx-auto px-6">
 
-              {/* Heading */}
-              <motion.h3
-                initial={{ opacity: 0, y: 10 }}
+          <section id="tech" className="py-24 md:py-32 lg:py-40 border-t border-slate-800">
+            <div className="max-w-7xl mx-auto px-6">
+
+              {/* Title */}
+              <motion.div
+                className="text-center mb-16 lg:mb-24"
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="text-2xl font-semibold text-white"
               >
-                Experience & Timeline
-              </motion.h3>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
+                  Real-world stack
+                </h2>
+                <p className="mt-4 text-slate-400 text-lg md:text-xl">
+                  Tools I use daily to ship production systems
+                </p>
+              </motion.div>
 
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-                viewport={{ once: true }}
-                className="mt-3 md:mt-4 text-slate-400 max-w-2xl"
-              >
-                A snapshot of my journey — learning, building, simplifying, and finding clarity in my work.
-              </motion.p>
+              <div className="space-y-16 lg:space-y-20">
 
-              {/* TIMELINE */}
-              <div className="mt-12 relative border-l border-slate-800 pl-6 space-y-12">
+                {/* Frontend */}
+                <div className="text-center">
+                  <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Frontend</h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 md:gap-14 justify-center">
+                    {["React", "TypeScript", "JavaScript", "TailwindCSS"].map((item, i) => (
+                      <TechItem key={item} name={item} delay={i * 0.08} />
+                    ))}
+                  </div>
+                </div>
 
-                {/* Item 1 */}
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="relative"
-                >
-                  <div className="absolute -left-[13px] w-3.5 h-3.5 bg-primary rounded-full"></div>
-                  <h4 className="text-white font-semibold">Started Root Xperiments</h4>
-                  <p className="text-slate-400 text-sm mt-1">
-                    Built a personal philosophy around simplicity, autonomy, and minimal design.
-                  </p>
-                </motion.div>
+                {/* Backend & Distributed Systems */}
+                <div className="text-center">
+                  <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Backend & Distributed Systems</h3>
+                  <div className="grid grid-cols-3 md:grid-cols-5 gap-10 md:gap-14 justify-center">
+                    {["Spring Boot", "Spring Cloud", "Microservices", "REST APIs", "Kafka"].map((item, i) => (
+                      <TechItem key={item} name={item} delay={i * 0.08} />
+                    ))}
+                  </div>
+                </div>
 
-                {/* Item 2 */}
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  viewport={{ once: true }}
-                  className="relative"
-                >
-                  <div className="absolute -left-[13px] w-3.5 h-3.5 bg-primary rounded-full"></div>
-                  <h4 className="text-white font-semibold">Developed Microservices Architecture</h4>
-                  <p className="text-slate-400 text-sm mt-1">
-                    Designed system boundaries, messaging patterns, and scalable components.
-                  </p>
-                </motion.div>
+                {/* Python & Data */}
+                <div className="text-center">
+                  <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Python & Data</h3>
+                  <div className="grid grid-cols-3 gap-10 md:gap-14 justify-center">
+                    {["Python", "SQL", "NoSQL"].map((item, i) => (
+                      <TechItem key={item} name={item} delay={i * 0.08} />
+                    ))}
+                  </div>
+                </div>
 
-                {/* Item 3 */}
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  viewport={{ once: true }}
-                  className="relative"
-                >
-                  <div className="absolute -left-[13px] w-3.5 h-3.5 bg-primary rounded-full"></div>
-                  <h4 className="text-white font-semibold">Built High-Intent Tools</h4>
-                  <p className="text-slate-400 text-sm mt-1">
-                    Todo App, Blog with AI summaries, LFC Fan App, Ghost themes — minimal and functional.
-                  </p>
-                </motion.div>
+                {/* DevOps & Others */}
+                <div className="text-center">
+                  <h3 className="text-xl md:text-2xl text-slate-500 mb-8">DevOps & Others</h3>
+                  <div className="grid grid-cols-3 md:grid-cols-4 gap-10 md:gap-14 justify-center">
+                    {["Docker", "CI/CD", "Cloud Deployments", "Ghost CMS"].map((item, i) => (
+                      <TechItem key={item} name={item} delay={i * 0.08} />
+                    ))}
+                  </div>
+                </div>
 
               </div>
+            </div>
+          </section>
 
-              {/* RESUME BUTTON */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
+
+
+
+          <section id="principles" className="py-32 md:py-40 border-t border-slate-800">
+            <div className="max-w-5xl mx-auto px-6">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="mt-16"
+                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center mb-20"
               >
-                <a
-                  href="/resume.pdf"   // <-- change this to your real resume path
-                  target="_blank"
-                  className="inline-block px-5 py-2.5 bg-primary text-white rounded-lg hover:opacity-90"
-                >
-                  Download Resume
-                </a>
+                How I work
+              </motion.h2>
+
+              <div className="grid md:grid-cols-2 gap-12 lg:gap-20 text-lg md:text-xl">
+                {[
+                  { term: "Root", desc: "Stability, clarity, foundation. Systems that last and scale." },
+                  { term: "Experiment", desc: "Curiosity, iteration, fearless creativity. Pushing what’s possible." },
+                  { term: "Minimal", desc: "Cut the noise. Every line of code and pixel has purpose." },
+                  { term: "Autonomous", desc: "Tools that run themselves — reliable, quiet, independent." },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.term}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 }}
+                    className="group"
+                  >
+                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                      <span className="text-red-500">{item.term}</span> →
+                    </h3>
+                    <p className="text-slate-400 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+
+
+
+
+          <section id="projects" className="py-32 md:py-40">
+            <div className="max-w-7xl mx-auto px-6">
+
+              {/* Heading – bigger, punchier */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mb-16 lg:mb-24"
+              >
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
+                  Selected work
+                </h2>
+                <p className="mt-4 text-slate-400 text-lg md:text-xl">
+                  Real systems. Real impact. No filler.
+                </p>
               </motion.div>
+
+              {/* Grid – 1–3 columns, bigger cards, better spacing */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+                {projects.map((p, i) => (
+                  <motion.a
+                    href={p.link || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={p.id}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.12, duration: 0.7 }}
+                    className="group block rounded-2xl overflow-hidden bg-[#0f0f10] border border-slate-800 
+                     shadow-xl hover:shadow-2xl hover:shadow-red-500/10
+                     hover:border-red-500/20 hover:-translate-y-2 
+                     transition-all duration-500"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    {/* Thumbnail */}
+                    <div className="relative aspect-[4/3] overflow-hidden bg-slate-900">
+                      <img
+                        src={p.thumbnail}
+                        alt={p.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      {/* Subtle overlay gradient on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6 lg:p-8">
+                      <h3 className="text-2xl font-bold text-white group-hover:text-red-400 transition-colors">
+                        {p.title}
+                      </h3>
+                      <p className="mt-2 text-slate-400 text-base leading-relaxed">
+                        {p.subtitle}
+                      </p>
+
+                      {/* Tech tags – tiny, elegant */}
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {p.tags?.slice(0, 4).map(tag => (
+                          <span
+                            key={tag}
+                            className="text-xs px-2.5 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                        {p.tags?.length > 4 && (
+                          <span className="text-xs text-slate-500">+{p.tags.length - 4}</span>
+                        )}
+                      </div>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+
+              {/* Optional CTA at the bottom */}
+              <div className="text-center mt-20">
+                <a
+                  href="/all-projects"
+                  className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition"
+                >
+                  See all projects →
+                </a>
+              </div>
+            </div>
+          </section>
+
+
+
+          <section id="experience" className="py-32 md:py-40 border-t border-slate-800">
+            <div className="max-w-5xl mx-auto px-6">
+
+              {/* Punchy heading */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+              >
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
+                  I’ve shipped
+                </h2>
+              </motion.div>
+
+              {/* Three-column proof grid – no timeline, just impact */}
+              <div className="grid md:grid-cols-3 gap-10 lg:gap-16">
+
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="text-center"
+                >
+                  <div className="text-6xl md:text-7xl font-bold text-red-500 mb-4">
+                    6+
+                  </div>
+                  <p className="text-xl text-white">Production<br />microservices</p>
+                  <p className="text-slate-400 mt-3">Spring Boot · Kafka · Docker</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="text-center"
+                >
+                  <div className="text-6xl md:text-7xl font-bold text-red-500 mb-4">
+                    40+
+                  </div>
+                  <p className="text-xl text-white">Tools & apps<br />built solo</p>
+                  <p className="text-slate-400 mt-3">From AI summarizers to full-stack platforms</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="text-center"
+                >
+                  <div className="text-6xl md:text-7xl font-bold text-red-500 mb-4">
+                    8+ yrs
+                  </div>
+                  <p className="text-xl text-white">Building systems<br />that last</p>
+                  <p className="text-slate-400 mt-3">Clean architecture · minimal design · zero fluff</p>
+                </motion.div>
+              </div>
+
+              {/* Optional resume CTA – small and subtle */}
+              <div className="text-center mt-20">
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  className="text-slate-400 hover:text-white transition text-sm uppercase tracking-wider"
+                >
+                  Full resume →
+                </a>
+              </div>
 
             </div>
           </section>
@@ -553,47 +540,67 @@ export default function App() {
 
 
           {/* CONTACT */}
-          <section id="contact" className="py-24 md:py-32 border-t border-slate-800">
-            <div className="max-w-5xl mx-auto px-6">
-              <h3 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">Contact</h3>
-              <p className="mt-3 md:mt-4 text-slate-400">Feel free to reach out.</p>
+          {/* CONTACT – now with a tiny bit of warmth and personality */}
+          <section id="contact" className="py-32 md:py-40 border-t border-slate-800">
+            <div className="max-w-5xl mx-auto px-6 text-center">
 
-              <div className="mt-4">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white"
+              >
+                Let’s build something
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.15 }}
+                className="mt-6 text-xl md:text-2xl text-slate-400"
+              >
+                Have a project, idea, or just want to talk systems and minimalism?
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="mt-12"
+              >
                 <a
                   href="mailto:ash@example.com"
-                  className="underline text-primary"
+                  className="inline-block text-2xl md:text-3xl font-medium text-red-500 hover:text-red-400 transition-colors"
                 >
-                  ash@example.com
+                  ash@example.com →
                 </a>
-              </div>
+              </motion.div>
             </div>
           </section>
 
 
         </main>
 
-        <footer className="py-10 border-t border-slate-800 text-center text-sm text-slate-500">
-          <div className="flex justify-center gap-6 mb-4">
+        {/* FOOTER – clean, tiny, confident */}
+        <footer className="py-12 border-t border-slate-800">
+          <div className="max-w-5xl mx-auto px-6 flex flex-col items-center">
 
-            <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              className="text-slate-400 hover:text-primary text-xl"
-            >
-              <FaGithub />
-            </a>
+            <div className="flex gap-8 mb-6">
+              <a href="https://github.com/yourusername" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
+                <FaGithub className="w-6 h-6" />
+              </a>
+              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
+                <FaLinkedin className="w-6 h-6" />
+              </a>
+              {/* Add more if you want – Twitter/X, etc. */}
+            </div>
 
-            <a
-              href="https://linkedin.com/in/yourusername"
-              target="_blank"
-              className="text-slate-400 hover:text-primary text-xl"
-            >
-              <FaLinkedin />
-            </a>
-
+            <p className="text-sm text-slate-500">
+              © {new Date().getFullYear()} Root Xperiments — Built with clarity and curiosity.
+            </p>
           </div>
-
-          © {new Date().getFullYear()} Ash — Root Xperiments
         </footer>
 
       </div>
