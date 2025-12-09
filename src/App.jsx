@@ -3,7 +3,8 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import HeroLogo from "./components/HeroLogo.jsx";
-import TechItem from "./components/TechItem.jsx";
+import TechIcon from "./components/TechItem.jsx";
+
 
 
 
@@ -268,57 +269,37 @@ xperiments.push({ ai: true, fearless: true });`}
 
 
 
-         <section id="tech" className="py-24 md:py-32 lg:py-40 border-t border-slate-800">
-  <div className="max-w-7xl mx-auto px-6">
+        {/* TECH STACK — now tiny, elegant, and perfectly balanced */}
+{/* TECH STACK — tiny, elegant, single-row, perfect */}
+<section id="tech" className="py-20 md:py-28 border-t border-slate-800">
+  <div className="max-w-5xl mx-auto px-6 text-center">
     
-    <motion.div className="text-center mb-16 lg:mb-24" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-      <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">Real-world stack</h2>
-      <p className="mt-4 text-slate-400 text-lg md:text-xl">Production-grade tools I actually use</p>
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-4xl md:text-5xl font-bold text-white"
+    >
+      Real-world stack
+    </motion.h2>
+
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.2 }}
+      className="mt-12 flex flex-wrap justify-center gap-8 md:gap-10"
+    >
+      {[
+        "React", "TypeScript", "TailwindCSS", "Angular",
+        "Java", "Spring Boot", "Kafka", "Redis",
+        "Python", "Claude",
+        "PostgreSQL", "MongoDB",
+        "Docker", "Kubernetes", "AWS"
+      ].map((name, i) => (
+        <TechIcon key={name} name={name} delay={i * 0.05} />
+      ))}
     </motion.div>
-
-    <div className="space-y-16 lg:space-y-20">
-
-      {/* Frontend */}
-      <div className="text-center">
-        <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Frontend</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 md:gap-14 justify-center">
-          {["React", "TypeScript", "TailwindCSS", "Angular"].map((n, i) => <TechItem key={n} name={n} delay={i*0.08} />)}
-        </div>
-      </div>
-
-      {/* Backend & Distributed Systems */}
-      <div className="text-center">
-        <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Backend & Distributed Systems</h3>
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-10 md:gap-14 justify-center">
-          {["Java", "Spring Boot", "Spring Cloud", "Microservices", "Kafka", "Redis"].map((n, i) => <TechItem key={n} name={n} delay={i*0.07} />)}
-        </div>
-      </div>
-
-      {/* Python & AI */}
-      <div className="text-center">
-        <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Python & AI</h3>
-        <div className="grid grid-cols-3 gap-10 md:gap-14 justify-center">
-          {["Python", "Claude"].map((n, i) => <TechItem key={n} name={n} delay={i*0.08} />)}
-        </div>
-      </div>
-
-      {/* Databases */}
-      <div className="text-center">
-        <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Databases</h3>
-        <div className="grid grid-cols-3 md:grid-cols-4 gap-10 md:gap-14 justify-center">
-          {["PostgreSQL", "MySQL", "MongoDB", "Oracle DB"].map((n, i) => <TechItem key={n} name={n} delay={i*0.08} />)}
-        </div>
-      </div>
-
-      {/* DevOps */}
-      <div className="text-center">
-        <h3 className="text-xl md:text-2xl text-slate-500 mb-8">DevOps</h3>
-        <div className="grid grid-cols-3 md:grid-cols-4 gap-10 md:gap-14 justify-center">
-          {["Docker", "Kubernetes", "CI/CD", "AWS"].map((n, i) => <TechItem key={n} name={n} delay={i*0.08} />)}
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
