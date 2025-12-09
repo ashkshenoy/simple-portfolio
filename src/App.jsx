@@ -28,7 +28,7 @@ export default function App() {
             {/* LOGO – tiny rX mark only on mobile, full text on desktop */}
             <a href="#hero" className="flex items-center gap-3 group">
               <img
-                src="images/rx.svg"       // ← use your clean black rX (40×40px version)
+                src="images/rx.jpg"       // ← use your clean black rX (40×40px version)
                 alt="Root Xperiments"
                 className="w-9 h-9 opacity-90 group-hover:opacity-100 transition"
               />
@@ -163,8 +163,13 @@ xperiments.push({ ai: true, fearless: true });`}
                 </div>
 
                 {/* RIGHT – Massive rX mark + identity below */}
-                <div className="flex flex-col items-center justify-center lg:justify-end translate-y-[-40px] pr-8">
-
+<div className="
+  flex flex-col items-center justify-center 
+  w-full
+  lg:items-end lg:justify-end 
+  lg:translate-y-[-40px] 
+  pr-0 lg:pr-8
+">
                   {/* rX logo */}
                   <HeroLogo />
 
@@ -173,10 +178,10 @@ xperiments.push({ ai: true, fearless: true });`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="mt-4 text-center max-w-md"
+                    className="mt-3 lg:mt-6 text-center max-w-md"
                   >
-                    <p className="text-l md:text-xl  tracking-wide text-slate-200 font-mono">
-                      <span className="identity-typing">
+                    <p className="text-lg md:text-xl lg:text-2xl font-semibold tracking-wide text-slate-300">
+                      <span className="identity-typing font-mono font-medium">
                         ROOT XPERIMENTS — A MINIMAL SYSTEMS + AI LAB
                       </span>
                     </p>
@@ -263,69 +268,61 @@ xperiments.push({ ai: true, fearless: true });`}
 
 
 
-          <section id="tech" className="py-24 md:py-32 lg:py-40 border-t border-slate-800">
-            <div className="max-w-7xl mx-auto px-6">
+         <section id="tech" className="py-24 md:py-32 lg:py-40 border-t border-slate-800">
+  <div className="max-w-7xl mx-auto px-6">
+    
+    <motion.div className="text-center mb-16 lg:mb-24" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+      <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">Real-world stack</h2>
+      <p className="mt-4 text-slate-400 text-lg md:text-xl">Production-grade tools I actually use</p>
+    </motion.div>
 
-              {/* Title */}
-              <motion.div
-                className="text-center mb-16 lg:mb-24"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
-                  Real-world stack
-                </h2>
-                <p className="mt-4 text-slate-400 text-lg md:text-xl">
-                  Tools I use daily to ship production systems
-                </p>
-              </motion.div>
+    <div className="space-y-16 lg:space-y-20">
 
-              <div className="space-y-16 lg:space-y-20">
+      {/* Frontend */}
+      <div className="text-center">
+        <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Frontend</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 md:gap-14 justify-center">
+          {["React", "TypeScript", "TailwindCSS", "Angular"].map((n, i) => <TechItem key={n} name={n} delay={i*0.08} />)}
+        </div>
+      </div>
 
-                {/* Frontend */}
-                <div className="text-center">
-                  <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Frontend</h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 md:gap-14 justify-center">
-                    {["React", "TypeScript", "JavaScript", "TailwindCSS"].map((item, i) => (
-                      <TechItem key={item} name={item} delay={i * 0.08} />
-                    ))}
-                  </div>
-                </div>
+      {/* Backend & Distributed Systems */}
+      <div className="text-center">
+        <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Backend & Distributed Systems</h3>
+        <div className="grid grid-cols-3 md:grid-cols-5 gap-10 md:gap-14 justify-center">
+          {["Java", "Spring Boot", "Spring Cloud", "Microservices", "Kafka", "Redis"].map((n, i) => <TechItem key={n} name={n} delay={i*0.07} />)}
+        </div>
+      </div>
 
-                {/* Backend & Distributed Systems */}
-                <div className="text-center">
-                  <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Backend & Distributed Systems</h3>
-                  <div className="grid grid-cols-3 md:grid-cols-5 gap-10 md:gap-14 justify-center">
-                    {["Spring Boot", "Spring Cloud", "Microservices", "REST APIs", "Kafka"].map((item, i) => (
-                      <TechItem key={item} name={item} delay={i * 0.08} />
-                    ))}
-                  </div>
-                </div>
+      {/* Python & AI */}
+      <div className="text-center">
+        <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Python & AI</h3>
+        <div className="grid grid-cols-3 gap-10 md:gap-14 justify-center">
+          {["Python", "Claude"].map((n, i) => <TechItem key={n} name={n} delay={i*0.08} />)}
+        </div>
+      </div>
 
-                {/* Python & Data */}
-                <div className="text-center">
-                  <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Python & Data</h3>
-                  <div className="grid grid-cols-3 gap-10 md:gap-14 justify-center">
-                    {["Python", "SQL", "NoSQL"].map((item, i) => (
-                      <TechItem key={item} name={item} delay={i * 0.08} />
-                    ))}
-                  </div>
-                </div>
+      {/* Databases */}
+      <div className="text-center">
+        <h3 className="text-xl md:text-2xl text-slate-500 mb-8">Databases</h3>
+        <div className="grid grid-cols-3 md:grid-cols-4 gap-10 md:gap-14 justify-center">
+          {["PostgreSQL", "MySQL", "MongoDB", "Oracle DB"].map((n, i) => <TechItem key={n} name={n} delay={i*0.08} />)}
+        </div>
+      </div>
 
-                {/* DevOps & Others */}
-                <div className="text-center">
-                  <h3 className="text-xl md:text-2xl text-slate-500 mb-8">DevOps & Others</h3>
-                  <div className="grid grid-cols-3 md:grid-cols-4 gap-10 md:gap-14 justify-center">
-                    {["Docker", "CI/CD", "Cloud Deployments", "Ghost CMS"].map((item, i) => (
-                      <TechItem key={item} name={item} delay={i * 0.08} />
-                    ))}
-                  </div>
-                </div>
+      {/* DevOps */}
+      <div className="text-center">
+        <h3 className="text-xl md:text-2xl text-slate-500 mb-8">DevOps</h3>
+        <div className="grid grid-cols-3 md:grid-cols-4 gap-10 md:gap-14 justify-center">
+          {["Docker", "Kubernetes", "CI/CD", "AWS"].map((n, i) => <TechItem key={n} name={n} delay={i*0.08} />)}
+        </div>
+      </div>
 
-              </div>
-            </div>
-          </section>
+    </div>
+  </div>
+</section>
+
+
 
 
 

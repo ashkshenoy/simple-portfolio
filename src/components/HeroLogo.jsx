@@ -7,13 +7,15 @@ export default function HeroLogo() {
     initial={{ opacity: 0, scale: 0.9 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.9, ease: "easeOut" }}
-    className="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] lg:max-w-[560px] xl:max-w-[620px]"
+    className="w-[120%] max-w-[1000px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[560px]"
+
+
   >
         {/* SVG version so we can animate the X stroke */}
         <motion.svg
-  width="560"
-  height="560"
-  viewBox="0 0 560 560"
+  width="550"
+  height="550"
+  viewBox="0 0 550 550"
   fill="none"
   className="drop-shadow-2xl"
   initial="hidden"
@@ -38,7 +40,8 @@ export default function HeroLogo() {
 
   {/* Big X – moved ~45px to the right */}
   <motion.path
-    d="M 205 40 L 445 440 M 445 40 L 205 440"
+ 
+    d="M 200 40 L 415 440 M 415 40 L 200 440"
    // ← shifted right from 160→205
     stroke="#ffffff"
     strokeWidth="60"
