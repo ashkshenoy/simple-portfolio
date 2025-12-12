@@ -701,7 +701,7 @@ xperiments.push({ ai: true, fearless: true });`}
               {/* Add more if you want – Twitter/X, etc. */}
             </div>
 
-            <p className="text-sm text-slate-500 text-center md:text-left">
+            <p className="text-sm text-slate-500 text-center md:text-center">
               © {new Date().getFullYear()} Root Xperiments — Built with clarity and curiosity.
             </p>
           </div>
