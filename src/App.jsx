@@ -122,124 +122,124 @@ export default function App() {
           {/* HERO */}
           <section id="hero" className="relative py-28 md:py-40 lg:py-52 overflow-hidden bg-[#0a0a1f]">
 
-  {/* Ultra-faint scrolling code texture */}
-  <div className="absolute inset-0 -z-10 pointer-events-none">
-    <motion.pre
-      initial={{ y: "20%" }}
-      animate={{ y: ["-20%", "120%", "-20%"] }}
-      transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute left-0 md:left-[5%] top-64 text-purple-400/5 
+            {/* Ultra-faint scrolling code texture */}
+            <div className="absolute inset-0 -z-10 pointer-events-none">
+              <motion.pre
+                initial={{ y: "20%" }}
+                animate={{ y: ["-20%", "120%", "-20%"] }}
+                transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute left-0 md:left-[5%] top-64 text-purple-400/5 
                  text-7xl md:text-8xl lg:text-[160px] font-mono leading-none blur-sm select-none"
-    >
-      {`root.setup({ stability: true });
+              >
+                {`root.setup({ stability: true });
 xperiments.push({ ai: true, fearless: true });`}
-    </motion.pre>
-  </div>
+              </motion.pre>
+            </div>
 
-  <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-      {/* LEFT — HEADLINE + SUBTEXT */}
-      <div className="order-1 lg:order-1 lg:col-start-1 lg:row-start-1 
+                {/* LEFT — HEADLINE + SUBTEXT */}
+                <div className="order-1 lg:order-1 lg:col-start-1 lg:row-start-1 
                       flex flex-col justify-center space-y-10 lg:space-y-12 max-w-xl lg:max-w-2xl">
 
-        {/* Headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-none">
-            Solid roots.<br />
-            <span className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-              Measured experiments.
-            </span>
-          </h1>
-        </motion.div>
+                  {/* Headline */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7 }}
+                  >
+                    <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-none">
+                      Solid roots.<br />
+                      <span className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+                        Measured experiments.
+                      </span>
+                    </h1>
+                  </motion.div>
 
-        {/* Subtext */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-          className="text-lg md:text-xl text-slate-300 leading-relaxed tracking-wide"
-        >
-          A stable core, experimenting at the edges with AI, creativity, and minimal design.
-        </motion.p>
-      </div>
+                  {/* Subtext */}
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.7 }}
+                    className="text-lg md:text-xl text-slate-300 leading-relaxed tracking-wide"
+                  >
+                    A stable core, experimenting at the edges with AI, creativity, and minimal design.
+                  </motion.p>
+                </div>
 
-      {/* RIGHT — rX LOGO + IDENTITY */}
-      <div className="order-2 lg:order-2 lg:col-start-2 lg:row-start-1 
+                {/* RIGHT — rX LOGO + IDENTITY */}
+                <div className="order-2 lg:order-2 lg:col-start-2 lg:row-start-1 
                       flex flex-col items-center justify-center w-full lg:translate-y-[-40px]">
 
-        {/* rX logo */}
-        <HeroLogo />
+                  {/* rX logo */}
+                  <HeroLogo />
 
-        {/* Identity line */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="mt-3 lg:mt-6 text-center max-w-md"
-        >
-          <motion.p
-            className="text-lg md:text-xl lg:text-2xl font-semibold tracking-wide text-slate-300 font-mono"
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: {},
-              visible: {
-                transition: { staggerChildren: 0.04 }
-              }
-            }}
-          >
-            {"ROOT XPERIMENTS — A MINIMAL SYSTEMS + AI LAB".split("").map((char, index) => (
-              <motion.span
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, y: "0.25em" },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: { duration: 0.04, ease: "easeOut" },
-                  },
-                }}
-              >
-                {char}
-              </motion.span>
-            ))}
-          </motion.p>
-        </motion.div>
-      </div>
+                  {/* Identity line */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-3 lg:mt-6 text-center max-w-md"
+                  >
+                    <motion.p
+                      className="text-lg md:text-xl lg:text-2xl font-semibold tracking-wide text-slate-300 font-mono"
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: {},
+                        visible: {
+                          transition: { staggerChildren: 0.04 }
+                        }
+                      }}
+                    >
+                      {"ROOT XPERIMENTS — A MINIMAL SYSTEMS + AI LAB".split("").map((char, index) => (
+                        <motion.span
+                          key={index}
+                          variants={{
+                            hidden: { opacity: 0, y: "0.25em" },
+                            visible: {
+                              opacity: 1,
+                              y: 0,
+                              transition: { duration: 0.04, ease: "easeOut" },
+                            },
+                          }}
+                        >
+                          {char}
+                        </motion.span>
+                      ))}
+                    </motion.p>
+                  </motion.div>
+                </div>
 
-      {/* CTA BUTTONS — CENTERED UNDER BOTH COLUMNS */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.7 }}
-        className="order-3 lg:order-3 col-span-1 lg:col-span-2 
+                {/* CTA BUTTONS — CENTERED UNDER BOTH COLUMNS */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.7 }}
+                  className="order-3 lg:order-3 col-span-1 lg:col-span-2 
                    flex justify-center mt-8"
-      >
-        <div className="flex flex-col sm:flex-row gap-4">
-          <a
-            href="#projects"
-            className="px-8 py-4 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-lg font-medium text-center"
-          >
-            View Projects →
-          </a>
+                >
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a
+                      href="#projects"
+                      className="px-8 py-4 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-lg font-medium text-center"
+                    >
+                      View Projects →
+                    </a>
 
-          <a
-            href="#latest-experiment"
-            className="px-8 py-4 border border-slate-600 text-white rounded-lg hover:bg-white/10 transition text-lg font-medium text-center"
-          >
-            Latest Experiment →
-          </a>
-        </div>
-      </motion.div>
+                    <a
+                      href="#latest-experiment"
+                      className="px-8 py-4 border border-slate-600 text-white rounded-lg hover:bg-white/10 transition text-lg font-medium text-center"
+                    >
+                      Latest Experiment →
+                    </a>
+                  </div>
+                </motion.div>
 
-    </div>
-  </div>
-</section>
+              </div>
+            </div>
+          </section>
 
 
 
@@ -291,14 +291,14 @@ xperiments.push({ ai: true, fearless: true });`}
 
                 {/* RIGHT – Photo */}
                 {/* RIGHT – Photo on mobile, right column on desktop */}
-<motion.div
-  initial={{ opacity: 0, scale: 0.95 }}
-  whileInView={{ opacity: 1, scale: 1 }}
-  viewport={{ once: true, margin: "-100px" }}
-  transition={{ delay: 0.3, duration: 0.9, ease: "easeOut" }}
-  className="order-1 md:order-2 relative group flex justify-center md:justify-end"
->
-  <div className="
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: 0.3, duration: 0.9, ease: "easeOut" }}
+                  className="order-1 md:order-2 relative group flex justify-center md:justify-end"
+                >
+                  <div className="
     aspect-[4/5]
     max-w-[360px] sm:max-w-[380px] lg:max-w-[420px]
     overflow-hidden 
@@ -306,13 +306,13 @@ xperiments.push({ ai: true, fearless: true });`}
     border border-slate-800 
     shadow-2xl 
   ">
-    <img
-      src="/images/me.jpg"
-      alt="Aashish K"
-      className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0"
-    />
-  </div>
-</motion.div>
+                    <img
+                      src="/images/me.jpg"
+                      alt="Aashish K"
+                      className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0"
+                    />
+                  </div>
+                </motion.div>
 
 
               </div>
@@ -701,7 +701,7 @@ xperiments.push({ ai: true, fearless: true });`}
               {/* Add more if you want – Twitter/X, etc. */}
             </div>
 
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-slate-500 text-center md:text-left">
               © {new Date().getFullYear()} Root Xperiments — Built with clarity and curiosity.
             </p>
           </div>
