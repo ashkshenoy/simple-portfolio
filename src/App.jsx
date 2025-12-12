@@ -272,7 +272,7 @@ xperiments.push({ ai: true, fearless: true });`}
   {/* Resume Button */}
   <div className="pt-4">
     <a
-      href="/AashishResume2025.pdf"
+      href="/Aashish_Resume_2025.pdf"
       target="_blank"
       className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition text-base md:text-lg"
     >
