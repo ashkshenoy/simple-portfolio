@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 
 export default function HeroLogo() {
   return (
-    <div className="flex items-center justify-center lg:justify-end px-6">
+    <div className="flex items-center justify-center lg:justify-end px-0">
   <motion.div
     initial={{ opacity: 0, scale: 0.9 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.9, ease: "easeOut" }}
-    className="w-[120%] max-w-[1000px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[560px]"
+    className="w-full max-w-[560px] mx-auto"
 
 
   >
@@ -23,7 +23,7 @@ export default function HeroLogo() {
 >
   {/* Small r – starts a bit left, then tucks perfectly under the X arm on hover */}
   <motion.text
-    x="90"           // ← was 120, now further left for better spacing
+    x="80"           // ← was 120, now further left for better spacing
     y="330"
     fontSize="300"
     fontWeight="900"
@@ -41,10 +41,10 @@ export default function HeroLogo() {
   {/* Big X – moved ~45px to the right */}
   <motion.path
  
-    d="M 200 40 L 415 440 M 415 40 L 200 440"
+    d="M 200 40 L 425 440 M 425 40 L 200 440"
    // ← shifted right from 160→205
     stroke="#ffffff"
-    strokeWidth="60"
+    strokeWidth="70"
     strokeLinecap="round"
     initial={{ pathLength: 0 }}
     animate={{ pathLength: 1 }}
@@ -65,7 +65,7 @@ export default function HeroLogo() {
 
       {/* Make the whole thing interactive */}
       <motion.div
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none"
         whileHover="hover"
         style={{ cursor: "default" }}
       />

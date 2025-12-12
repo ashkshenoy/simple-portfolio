@@ -6,19 +6,39 @@ import HeroLogo from "./components/HeroLogo.jsx";
 import TechIcon from "./components/TechItem.jsx";
 
 
+import { i, link } from "framer-motion/client";
+
+
 
 
 export default function App() {
+  const [showLabModal, setShowLabModal] = useState(false);
+
   const projects = [
-    { id: 1, title: "Microservices App", subtitle: "Architecture + Services", thumbnail: "/images/MS-ecommerce.png" },
-    { id: 2, title: "Minimal To-Do", subtitle: "React + Tailwind", thumbnail: "/images/to-do.jpg" },
-    { id: 3, title: "Blog App", subtitle: "Python + AI features", thumbnail: "/images/blog.png" },
-    { id: 4, title: "Minimal Boxing Coach", subtitle: "Practice Boxing", thumbnail: "/images/boxing.jpg" },
+
+    {
+      id: "lab",
+      title: "AI Agent Research and Experiments",
+      subtitle: "Reaserch Mode",
+      thumbnail: "/images/lab.jpg",  // dark abstract or screenshot of your newest thing
+      link: "#projects", // or /lab if you ever make a collection
+      tags: ["Study", "AI Agents", "Python"], // ← add relevant tags
+      
+      isLatest: true   // ← we’ll use this to style it differently
+    },
+    { id: 1, title: "RootX E-commerce", subtitle: "Simple e-commerce app with Microservices architechture", thumbnail: "/images/MS-ecommerce.png", tags: ["Java", "Spring Boot", "Docker", "React"], link: "https://github.com/ashkshenoy/root-x-microsercvices.git"},
+    { id: 2, title: "RootX To-Do", subtitle: "To-do with localstorage", thumbnail: "/images/minimal-todo.png", tags: ["React", "TailwindCSS"], link: "https://todo-app-five-alpha-22.vercel.app/"},
+    { id: 3, title: "RootX Blog ", subtitle: "Blog with auth and auto summarization and tag generation capabilities", thumbnail: "/images/blog.png", tags: ["React", "Java", "Spring Boot", "Python"], link: "https://github.com/ashkshenoy/react-blog-frontend.git"},
+    { id: 4, title: "RootX Boxing Coach", subtitle: "Practice boxing with intensity presets or customize your session", thumbnail: "/images/boxing.jpg", tags: ["React", "TailwindCSS"], link: "https://minimal-boxing-app.netlify.app/"},
+    { id: 5, title: "RootX News Agent", subtitle: "AI agent delivering news at 9 AM with Telegram bot", thumbnail: "/images/news-agent.png", tags: ["Telegram", "Python"], link: "https://github.com/ashkshenoy/news-agent.git" },
+    { id: 6, title: "Portfolio", subtitle: "Aashish + RootX", thumbnail: "/images/portfolio.png", tags: ["React", "TailwindCSS", "Vercel", "FramerMotion"],  link: "https://github.com/ashkshenoy/simple-portfolio.git" },  
   ];
   const [open, setOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
+
+      
 
 
       {/* NAV */}
@@ -131,7 +151,7 @@ xperiments.push({ ai: true, fearless: true });`}
                     <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-none">
                       Solid roots.<br />
                       <span className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-                        Fearless experiments.
+                        Measured  experiments.
                       </span>
                     </h1>
                   </motion.div>
@@ -156,7 +176,7 @@ xperiments.push({ ai: true, fearless: true });`}
                     <a href="#projects" className="px-8 py-4 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-lg font-medium text-center">
                       View Projects →
                     </a>
-                    <a href="#latest" className="px-8 py-4 border border-slate-600 text-white rounded-lg hover:bg-white/10 transition text-lg font-medium text-center">
+                    <a href="#latest-experiment" className="px-8 py-4 border border-slate-600 text-white rounded-lg hover:bg-white/10 transition text-lg font-medium text-center">
                       Latest Experiment →
                     </a>
                   </motion.div>
@@ -164,31 +184,56 @@ xperiments.push({ ai: true, fearless: true });`}
                 </div>
 
                 {/* RIGHT – Massive rX mark + identity below */}
-<div className="
-  flex flex-col items-center justify-center 
+                <div className="
+  flex flex-col items-center justify-center
   w-full
-  lg:items-end lg:justify-end 
-  lg:translate-y-[-40px] 
-  pr-0 lg:pr-8
+  lg:items-center lg:justify-center
+  lg:translate-y-[-40px]
+  pr-0
 ">
                   {/* rX logo */}
                   <HeroLogo />
 
                   {/* Identity below logo */}
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
                     className="mt-3 lg:mt-6 text-center max-w-md"
                   >
-                    <p className="text-lg md:text-xl lg:text-2xl font-semibold tracking-wide text-slate-300">
-                      <span className="identity-typing font-mono font-medium">
-                        ROOT XPERIMENTS — A MINIMAL SYSTEMS + AI LAB
-                      </span>
-                    </p>
+                    <motion.p
+                      className="text-lg md:text-xl lg:text-2xl font-semibold tracking-wide text-slate-300 font-mono"
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: {},
+                        visible: {
+                          transition: {
+                            staggerChildren: 0.04,
+                          },
+                        },
+                      }}
+                    >
+                      {"ROOT XPERIMENTS — A MINIMAL SYSTEMS + AI LAB".split("").map((char, index) => (
+                        <motion.span
+                          key={index}
+                          variants={{
+                            hidden: { opacity: 0, y: `0.25em` },
+                            visible: {
+                              opacity: 1,
+                              y: 0,
+                              transition: { duration: 0.04, ease: "easeOut" },
+                            },
+                          }}
+                        >
+                          {char}
+                        </motion.span>
+                      ))}
+                    </motion.p>
                   </motion.div>
 
                 </div>
+
 
               </div>
             </div>
@@ -203,35 +248,42 @@ xperiments.push({ ai: true, fearless: true });`}
 
                 {/* LEFT – Text */}
                 <div className="space-y-8 lg:space-y-10">
-                  <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.7 }}
-                    className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
-                  >
-                    I build things that<br />
-                    <span className="text-red-500">just work</span> —<br />
-                    then push them until they spark.
-                  </motion.h2>
-
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ delay: 0.2, duration: 0.7 }}
-                    className="text-lg md:text-xl text-slate-300 space-y-5 leading-relaxed"
-                  >
-                    <p>
-                      Root Xperiments is where rock-solid systems meet fearless experimentation.
-                      Minimal interfaces, bulletproof architecture, and occasional AI-powered madness.
-                    </p>
-                    <p>
-                      If you value clarity over flash, performance over bloat, and ideas that actually ship —
-                      we’ll probably get along.
-                    </p>
-                  </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-100px" }}
+  transition={{ delay: 0.2, duration: 0.7 }}
+  className="text-lg md:text-xl text-slate-300 space-y-5 leading-relaxed"
+>
+  <p>
+    Root Xperiments is where I, Aashish K, bring solid engineering together with thoughtful experimentation.
+    Clean interfaces, reliable architecture, and the occasional well-placed use of AI.
+  </p>
+
+  <p>
+    With over 6 years of experience across multiple teams and products, I focus on building systems that stay stable,
+    evolve cleanly, and support real work without getting in the way.
+  </p>
+
+  <p>
+    If you value clarity over noise, performance over bloat, and work that actually ships — we’ll get along well.
+  </p>
+
+  {/* Resume Button */}
+  <div className="pt-4">
+    <a
+      href="/AashishResume2025.pdf"
+      target="_blank"
+      className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition text-base md:text-lg"
+    >
+      <span className="text-white/90">📄</span>
+      <span>View Resume</span>
+    </a>
+  </div>
+</motion.div>
+
                 </div>
+
 
                 {/* RIGHT – Photo */}
                 <motion.div
@@ -269,46 +321,46 @@ xperiments.push({ ai: true, fearless: true });`}
 
 
 
-        {/* TECH STACK — now tiny, elegant, and perfectly balanced */}
-{/* TECH STACK — tiny, elegant, single-row, perfect */}
-<section id="tech" className="py-20 md:py-28 border-t border-slate-800">
-  <div className="max-w-5xl mx-auto px-6 text-center">
-    
-    <motion.h2
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="text-4xl md:text-5xl font-bold text-white"
-    >
-      Real-world stack
-    </motion.h2>
+          {/* TECH STACK — now tiny, elegant, and perfectly balanced */}
+          {/* TECH STACK — tiny, elegant, single-row, perfect */}
+          <section id="tech" className="py-20 md:py-28 border-t border-slate-800">
+            <div className="max-w-5xl mx-auto px-6 text-center">
 
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.2 }}
-      className="mt-12 flex flex-wrap justify-center gap-8 md:gap-10"
-    >
-      {[
-        "React", "TypeScript", "TailwindCSS", "Angular",
-        "Java", "Spring Boot", "Kafka", "Redis",
-        "Python", "Claude",
-        "PostgreSQL", "MongoDB",
-        "Docker", "Kubernetes", "AWS"
-      ].map((name, i) => (
-        <TechIcon key={name} name={name} delay={i * 0.05} />
-      ))}
-    </motion.div>
-  </div>
-</section>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center mb-20"
+              >
+                Real-world stack
+              </motion.h2>
 
-
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="mt-12 flex flex-wrap justify-center gap-8 md:gap-10"
+              >
+                {[
+                  "React", "TypeScript", "TailwindCSS", "Angular",
+                  "Java", "Spring Boot", "Kafka", "Spring",
+                  "Python", "Claude",
+                  "PostgreSQL", "MongoDB", "OracleDB",
+                  "Docker", "Netlify", "Railway", "Vercel", "AWS", "Github"
+                ].map((name, i) => (
+                  <TechIcon key={name} name={name} delay={i * 0.05} />
+                ))}
+              </motion.div>
+            </div>
+          </section>
 
 
 
 
-          <section id="principles" className="py-32 md:py-40 border-t border-slate-800">
+
+
+          <section id="principles" className="py-32 md:py-40 border-t border-b border-slate-800">
             <div className="max-w-5xl mx-auto px-6">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
@@ -364,7 +416,8 @@ xperiments.push({ ai: true, fearless: true });`}
                   Selected work
                 </h2>
                 <p className="mt-4 text-slate-400 text-lg md:text-xl">
-                  Real systems. Real impact. No filler.
+                  Steady work. Quiet results.
+
                 </p>
               </motion.div>
 
@@ -372,6 +425,8 @@ xperiments.push({ ai: true, fearless: true });`}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                 {projects.map((p, i) => (
                   <motion.a
+
+                    id={p.isLatest ? "latest-experiment" : undefined}
                     href={p.link || "#"}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -380,12 +435,28 @@ xperiments.push({ ai: true, fearless: true });`}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.12, duration: 0.7 }}
-                    className="group block rounded-2xl overflow-hidden bg-[#0f0f10] border border-slate-800 
-                     shadow-xl hover:shadow-2xl hover:shadow-red-500/10
-                     hover:border-red-500/20 hover:-translate-y-2 
-                     transition-all duration-500"
+                    className={`group relative rounded-2xl overflow-hidden bg-[#0f0f10] border transition-all duration-500
+        ${p.isLatest
+                        ? "border-red-500/50 shadow-2xl shadow-red-500/20 hover:border-red-500/70"
+                        : "border-slate-800 hover:border-red-500/20"
+                      }`}
+                      onClick={(e) => {
+                        if (p.id === "lab") {
+                          e.preventDefault();
+                          setShowLabModal(true);
+                        }
+                      }}
                     whileHover={{ scale: 1.02 }}
                   >
+                    {/* Latest Experiment badge — only on the special card */}
+                    {p.isLatest && (
+                      <div className="absolute top-4 left-4 z-10">
+                        <span className="px-3 py-1.5 bg-red-500/20 text-red-400 text-xs font-medium rounded-full border border-red-500/50 backdrop-blur-sm">
+                          Latest Experiment
+                        </span>
+                      </div>
+                    )}
+
                     {/* Thumbnail */}
                     <div className="relative aspect-[4/3] overflow-hidden bg-slate-900">
                       <img
@@ -393,7 +464,6 @@ xperiments.push({ ai: true, fearless: true });`}
                         alt={p.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      {/* Subtle overlay gradient on hover */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
 
@@ -406,7 +476,7 @@ xperiments.push({ ai: true, fearless: true });`}
                         {p.subtitle}
                       </p>
 
-                      {/* Tech tags – tiny, elegant */}
+                      {/* Tags */}
                       <div className="flex flex-wrap gap-2 mt-4">
                         {p.tags?.slice(0, 4).map(tag => (
                           <span
@@ -425,24 +495,17 @@ xperiments.push({ ai: true, fearless: true });`}
                 ))}
               </div>
 
-              {/* Optional CTA at the bottom */}
-              <div className="text-center mt-20">
-                <a
-                  href="/all-projects"
-                  className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition"
-                >
-                  See all projects →
-                </a>
-              </div>
+
             </div>
           </section>
 
+       
 
 
           <section id="experience" className="py-32 md:py-40 border-t border-slate-800">
-            <div className="max-w-5xl mx-auto px-6">
+            <div className="max-w-6xl mx-auto px-6">
 
-              {/* Punchy heading */}
+              {/* Heading */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -454,9 +517,10 @@ xperiments.push({ ai: true, fearless: true });`}
                 </h2>
               </motion.div>
 
-              {/* Three-column proof grid – no timeline, just impact */}
-              <div className="grid md:grid-cols-3 gap-10 lg:gap-16">
+              {/* 4-column proof grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
 
+                {/* 1 — Years + companies */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -465,12 +529,15 @@ xperiments.push({ ai: true, fearless: true });`}
                   className="text-center"
                 >
                   <div className="text-6xl md:text-7xl font-bold text-red-500 mb-4">
-                    6+
+                    6+ yrs
                   </div>
-                  <p className="text-xl text-white">Production<br />microservices</p>
-                  <p className="text-slate-400 mt-3">Spring Boot · Kafka · Docker</p>
+                  <p className="text-xl text-white">Building across 2+ companies</p>
+                  <p className="text-slate-400 mt-3">
+                    Stable delivery · ownership · long-term systems
+                  </p>
                 </motion.div>
 
+                {/* 2 — Projects shipped */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -479,12 +546,15 @@ xperiments.push({ ai: true, fearless: true });`}
                   className="text-center"
                 >
                   <div className="text-6xl md:text-7xl font-bold text-red-500 mb-4">
-                    40+
+                    5+
                   </div>
-                  <p className="text-xl text-white">Tools & apps<br />built solo</p>
-                  <p className="text-slate-400 mt-3">From AI summarizers to full-stack platforms</p>
+                  <p className="text-xl text-white">Projects shipped end-to-end</p>
+                  <p className="text-slate-400 mt-3">
+                    Product thinking · consistency · thoughtful scope
+                  </p>
                 </motion.div>
 
+                {/* 3 — Full-stack work */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -493,26 +563,42 @@ xperiments.push({ ai: true, fearless: true });`}
                   className="text-center"
                 >
                   <div className="text-6xl md:text-7xl font-bold text-red-500 mb-4">
-                    8+ yrs
+                    Full-stack
                   </div>
-                  <p className="text-xl text-white">Building systems<br />that last</p>
-                  <p className="text-slate-400 mt-3">Clean architecture · minimal design · zero fluff</p>
+                  <p className="text-xl text-white">
+                    Design → build → deploy → refine
+                  </p>
+                  <p className="text-slate-400 mt-3">
+                    React · Java · Python · APIs · minimal UI
+                  </p>
                 </motion.div>
+
+                {/* 4 — Tools + experiments */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  className="text-center"
+                >
+                  <div className="text-6xl md:text-7xl font-bold text-red-500 mb-4">
+                    20+
+                  </div>
+                  <p className="text-xl text-white">
+                    Tools, utilities, and experiments
+                  </p>
+                  <p className="text-slate-400 mt-3">
+                    Shaped steadily across work and personal projects
+                  </p>
+                </motion.div>
+
               </div>
 
-              {/* Optional resume CTA – small and subtle */}
-              <div className="text-center mt-20">
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  className="text-slate-400 hover:text-white transition text-sm uppercase tracking-wider"
-                >
-                  Full resume →
-                </a>
-              </div>
+              
 
             </div>
           </section>
+
 
 
 
@@ -549,10 +635,10 @@ xperiments.push({ ai: true, fearless: true });`}
                 className="mt-12"
               >
                 <a
-                  href="mailto:ash@example.com"
+                  href="mailto:rootxperiments@gmail.com"
                   className="inline-block text-2xl md:text-3xl font-medium text-red-500 hover:text-red-400 transition-colors"
                 >
-                  ash@example.com →
+                  rootxperiments@gmail.com →
                 </a>
               </motion.div>
             </div>
@@ -560,16 +646,56 @@ xperiments.push({ ai: true, fearless: true });`}
 
 
         </main>
+        {/* LAB MODAL */}
+{showLabModal && (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[999]"
+    onClick={() => setShowLabModal(false)} // close on background click
+  >
+    <motion.div
+      initial={{ scale: 0.9, opacity: 0, y: 20 }}
+      animate={{ scale: 1, opacity: 1, y: 0 }}
+      exit={{ scale: 0.9, opacity: 0, y: 20 }}
+      transition={{ duration: 0.25 }}
+      className="bg-[#0f0f12] border border-slate-800 rounded-2xl p-8 w-[90%] max-w-lg text-center shadow-xl"
+      onClick={(e) => e.stopPropagation()} // prevents closing when clicking inside modal
+    >
+      {/* Title */}
+      <h2 className="text-3xl font-bold text-white mb-3">
+        AI Agent Research
+      </h2>
+
+      {/* Subtitle */}
+      <p className="text-slate-400 text-base leading-relaxed mb-6">
+        Research & small experiments with autonomous behaviors, agent loops, and minimal system design.
+      </p>
+
+      {/* Links (optional) */}
+      <div className="flex flex-col items-center gap-3">
+        
+        <button
+          onClick={() => setShowLabModal(false)}
+          className="text-slate-500 hover:text-white text-sm mt-4"
+        >
+          Close
+        </button>
+      </div>
+    </motion.div>
+  </motion.div>
+)}
 
         {/* FOOTER – clean, tiny, confident */}
         <footer className="py-12 border-t border-slate-800">
           <div className="max-w-5xl mx-auto px-6 flex flex-col items-center">
 
             <div className="flex gap-8 mb-6">
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
+              <a href="https://github.com/ashkshenoy/" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
                 <FaGithub className="w-6 h-6" />
               </a>
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
+              <a href="https://www.linkedin.com/in/aashish-k-926a63166/" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
                 <FaLinkedin className="w-6 h-6" />
               </a>
               {/* Add more if you want – Twitter/X, etc. */}
@@ -583,5 +709,7 @@ xperiments.push({ ai: true, fearless: true });`}
 
       </div>
     </div>
+
+    
   );
 }
