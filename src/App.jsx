@@ -23,22 +23,22 @@ export default function App() {
       thumbnail: "/images/lab.jpg",  // dark abstract or screenshot of your newest thing
       link: "#projects", // or /lab if you ever make a collection
       tags: ["Study", "AI Agents", "Python"], // ← add relevant tags
-      
+
       isLatest: true   // ← we’ll use this to style it differently
     },
-    { id: 1, title: "RootX E-commerce", subtitle: "Simple e-commerce app with Microservices architechture", thumbnail: "/images/MS-ecommerce.png", tags: ["Java", "Spring Boot", "Docker", "React"], link: "https://github.com/ashkshenoy/root-x-microsercvices.git"},
-    { id: 2, title: "RootX To-Do", subtitle: "To-do with localstorage", thumbnail: "/images/minimal-todo.png", tags: ["React", "TailwindCSS"], link: "https://todo-app-five-alpha-22.vercel.app/"},
-    { id: 3, title: "RootX Blog ", subtitle: "Blog with auth and auto summarization and tag generation capabilities", thumbnail: "/images/blog.png", tags: ["React", "Java", "Spring Boot", "Python"], link: "https://github.com/ashkshenoy/react-blog-frontend.git"},
-    { id: 4, title: "RootX Boxing Coach", subtitle: "Practice boxing with intensity presets or customize your session", thumbnail: "/images/boxing.jpg", tags: ["React", "TailwindCSS"], link: "https://minimal-boxing-app.netlify.app/"},
+    { id: 1, title: "RootX E-commerce", subtitle: "Simple e-commerce app with Microservices architechture", thumbnail: "/images/MS-ecommerce.png", tags: ["Java", "Spring Boot", "Docker", "React"], link: "https://github.com/ashkshenoy/root-x-microsercvices.git" },
+    { id: 2, title: "RootX To-Do", subtitle: "To-do with localstorage", thumbnail: "/images/minimal-todo.png", tags: ["React", "TailwindCSS"], link: "https://todo-app-five-alpha-22.vercel.app/" },
+    { id: 3, title: "RootX Blog ", subtitle: "Blog with auth and auto summarization and tag generation capabilities", thumbnail: "/images/blog.png", tags: ["React", "Java", "Spring Boot", "Python"], link: "https://github.com/ashkshenoy/react-blog-frontend.git" },
+    { id: 4, title: "RootX Boxing Coach", subtitle: "Practice boxing with intensity presets or customize your session", thumbnail: "/images/boxing.jpg", tags: ["React", "TailwindCSS"], link: "https://minimal-boxing-app.netlify.app/" },
     { id: 5, title: "RootX News Agent", subtitle: "AI agent delivering news at 9 AM with Telegram bot", thumbnail: "/images/news-agent.png", tags: ["Telegram", "Python"], link: "https://github.com/ashkshenoy/news-agent.git" },
-    { id: 6, title: "Portfolio", subtitle: "Aashish + RootX", thumbnail: "/images/portfolio.png", tags: ["React", "TailwindCSS", "Vercel", "FramerMotion"],  link: "https://github.com/ashkshenoy/simple-portfolio.git" },  
+    { id: 6, title: "Portfolio", subtitle: "Aashish + RootX", thumbnail: "/images/portfolio.png", tags: ["React", "TailwindCSS", "Vercel", "FramerMotion"], link: "https://github.com/ashkshenoy/simple-portfolio.git" },
   ];
   const [open, setOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
 
-      
+
 
 
       {/* NAV */}
@@ -122,198 +122,198 @@ export default function App() {
           {/* HERO */}
           <section id="hero" className="relative py-28 md:py-40 lg:py-52 overflow-hidden bg-[#0a0a1f]">
 
-            {/* Ultra-faint scrolling code texture – only on the left half */}
-            <div className="absolute inset-0 -z-10 pointer-events-none">
-              <motion.pre
-                initial={{ y: "20%" }}
-                animate={{ y: ["-20%", "120%", "-20%"] }}
-                transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute left-0 md:left-[5%] top-64 text-purple-400/5 
+  {/* Ultra-faint scrolling code texture */}
+  <div className="absolute inset-0 -z-10 pointer-events-none">
+    <motion.pre
+      initial={{ y: "20%" }}
+      animate={{ y: ["-20%", "120%", "-20%"] }}
+      transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute left-0 md:left-[5%] top-64 text-purple-400/5 
                  text-7xl md:text-8xl lg:text-[160px] font-mono leading-none blur-sm select-none"
-              >
-                {`root.setup({ stability: true });
+    >
+      {`root.setup({ stability: true });
 xperiments.push({ ai: true, fearless: true });`}
-              </motion.pre>
-            </div>
+    </motion.pre>
+  </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[80vh]">
+  <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-                {/* LEFT – Text side */}
-                <div className="flex flex-col justify-center space-y-10 lg:space-y-12 max-w-xl lg:max-w-2xl">
+      {/* LEFT — HEADLINE + SUBTEXT */}
+      <div className="order-1 lg:order-1 lg:col-start-1 lg:row-start-1 
+                      flex flex-col justify-center space-y-10 lg:space-y-12 max-w-xl lg:max-w-2xl">
 
-                  {/* Headline */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
-                  >
-                    <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-none">
-                      Solid roots.<br />
-                      <span className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-                        Measured  experiments.
-                      </span>
-                    </h1>
-                  </motion.div>
+        {/* Headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-none">
+            Solid roots.<br />
+            <span className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+              Measured experiments.
+            </span>
+          </h1>
+        </motion.div>
 
-                  {/* Subtext */}
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.7 }}
-                    className="text-lg md:text-xl text-slate-300 leading-relaxed tracking-wide"
-                  >
-                    A stable core, experimenting at the edges with AI, creativity, and minimal design.
-                  </motion.p>
+        {/* Subtext */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.7 }}
+          className="text-lg md:text-xl text-slate-300 leading-relaxed tracking-wide"
+        >
+          A stable core, experimenting at the edges with AI, creativity, and minimal design.
+        </motion.p>
+      </div>
 
-                  {/* Buttons */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.7 }}
-                    className="flex flex-col sm:flex-row gap-4"
-                  >
-                    <a href="#projects" className="px-8 py-4 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-lg font-medium text-center">
-                      View Projects →
-                    </a>
-                    <a href="#latest-experiment" className="px-8 py-4 border border-slate-600 text-white rounded-lg hover:bg-white/10 transition text-lg font-medium text-center">
-                      Latest Experiment →
-                    </a>
-                  </motion.div>
+      {/* RIGHT — rX LOGO + IDENTITY */}
+      <div className="order-2 lg:order-2 lg:col-start-2 lg:row-start-1 
+                      flex flex-col items-center justify-center w-full lg:translate-y-[-40px]">
 
-                </div>
+        {/* rX logo */}
+        <HeroLogo />
 
-                {/* RIGHT – Massive rX mark + identity below */}
-                <div className="
-  flex flex-col items-center justify-center
-  w-full
-  lg:items-center lg:justify-center
-  lg:translate-y-[-40px]
-  pr-0
-">
-                  {/* rX logo */}
-                  <HeroLogo />
+        {/* Identity line */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="mt-3 lg:mt-6 text-center max-w-md"
+        >
+          <motion.p
+            className="text-lg md:text-xl lg:text-2xl font-semibold tracking-wide text-slate-300 font-mono"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: 0.04 }
+              }
+            }}
+          >
+            {"ROOT XPERIMENTS — A MINIMAL SYSTEMS + AI LAB".split("").map((char, index) => (
+              <motion.span
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, y: "0.25em" },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.04, ease: "easeOut" },
+                  },
+                }}
+              >
+                {char}
+              </motion.span>
+            ))}
+          </motion.p>
+        </motion.div>
+      </div>
 
-                  {/* Identity below logo */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="mt-3 lg:mt-6 text-center max-w-md"
-                  >
-                    <motion.p
-                      className="text-lg md:text-xl lg:text-2xl font-semibold tracking-wide text-slate-300 font-mono"
-                      initial="hidden"
-                      animate="visible"
-                      variants={{
-                        hidden: {},
-                        visible: {
-                          transition: {
-                            staggerChildren: 0.04,
-                          },
-                        },
-                      }}
-                    >
-                      {"ROOT XPERIMENTS — A MINIMAL SYSTEMS + AI LAB".split("").map((char, index) => (
-                        <motion.span
-                          key={index}
-                          variants={{
-                            hidden: { opacity: 0, y: `0.25em` },
-                            visible: {
-                              opacity: 1,
-                              y: 0,
-                              transition: { duration: 0.04, ease: "easeOut" },
-                            },
-                          }}
-                        >
-                          {char}
-                        </motion.span>
-                      ))}
-                    </motion.p>
-                  </motion.div>
+      {/* CTA BUTTONS — CENTERED UNDER BOTH COLUMNS */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.7 }}
+        className="order-3 lg:order-3 col-span-1 lg:col-span-2 
+                   flex justify-center mt-8"
+      >
+        <div className="flex flex-col sm:flex-row gap-4">
+          <a
+            href="#projects"
+            className="px-8 py-4 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-lg font-medium text-center"
+          >
+            View Projects →
+          </a>
 
-                </div>
+          <a
+            href="#latest-experiment"
+            className="px-8 py-4 border border-slate-600 text-white rounded-lg hover:bg-white/10 transition text-lg font-medium text-center"
+          >
+            Latest Experiment →
+          </a>
+        </div>
+      </motion.div>
 
+    </div>
+  </div>
+</section>
 
-              </div>
-            </div>
-          </section>
 
 
 
 
           <section id="about" className="py-24 md:py-32 lg:py-40 border-t border-slate-800">
             <div className="max-w-7xl mx-auto px-6">
-              <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+              <div className="grid md:grid-cols-[3fr_2fr] gap-12 lg:gap-20 items-center">
 
                 {/* LEFT – Text */}
-                <div className="space-y-8 lg:space-y-10">
+                <div className="order-2 md:order-1 space-y-8 lg:space-y-10">
+
                   <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, margin: "-100px" }}
-  transition={{ delay: 0.2, duration: 0.7 }}
-  className="text-lg md:text-xl text-slate-300 space-y-5 leading-relaxed"
->
-  <p>
-    Root Xperiments is where I, Aashish K, bring solid engineering together with thoughtful experimentation.
-    Clean interfaces, reliable architecture, and the occasional well-placed use of AI.
-  </p>
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ delay: 0.2, duration: 0.7 }}
+                    className="text-lg md:text-xl text-slate-300 space-y-5 leading-relaxed "
+                  >
+                    <p>
+                      Root Xperiments is where I, Aashish K, bring solid engineering together with thoughtful experimentation.
+                      Clean interfaces, reliable architecture, and the occasional well-placed use of AI.
+                    </p>
 
-  <p>
-    With over 6 years of experience across multiple teams and products, I focus on building systems that stay stable,
-    evolve cleanly, and support real work without getting in the way.
-  </p>
+                    <p>
+                      With over 6 years of experience across multiple teams and products, I focus on building systems that stay stable,
+                      evolve cleanly, and support real work without getting in the way.
+                    </p>
 
-  <p>
-    If you value clarity over noise, performance over bloat, and work that actually ships — we’ll get along well.
-  </p>
+                    <p>
+                      If you value clarity over noise, performance over bloat, and work that actually ships — we’ll get along well.
+                    </p>
 
-  {/* Resume Button */}
-  <div className="pt-4">
-    <a
-      href="/Aashish_Resume_2025.pdf"
-      target="_blank"
-      className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition text-base md:text-lg"
-    >
-      <span className="text-white/90">📄</span>
-      <span>View Resume</span>
-    </a>
-  </div>
-</motion.div>
+                    {/* Resume Button */}
+                    <div className="pt-4">
+                      <a
+                        href="/Aashish_Resume_2025.pdf"
+                        target="_blank"
+                        className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition text-base md:text-lg"
+                      >
+                        <span className="text-white/90">📄</span>
+                        <span>View Resume</span>
+                      </a>
+                    </div>
+                  </motion.div>
 
                 </div>
 
 
                 {/* RIGHT – Photo */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ delay: 0.3, duration: 0.9, ease: "easeOut" }}
-                  className="relative group"
-                >
-                  <div className="aspect-[4/5] overflow-hidden rounded-xl border border-slate-800 shadow-2xl">
-                    <img
-                      src="/images/me.jpg"               // ← put your photo here
-                      alt="Root Xperiments"
-                      className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0"
-                    />
-                  </div>
+                {/* RIGHT – Photo on mobile, right column on desktop */}
+<motion.div
+  initial={{ opacity: 0, scale: 0.95 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  viewport={{ once: true, margin: "-100px" }}
+  transition={{ delay: 0.3, duration: 0.9, ease: "easeOut" }}
+  className="order-1 md:order-2 relative group flex justify-center md:justify-end"
+>
+  <div className="
+    aspect-[4/5]
+    max-w-[360px] sm:max-w-[380px] lg:max-w-[420px]
+    overflow-hidden 
+    rounded-xl 
+    border border-slate-800 
+    shadow-2xl 
+  ">
+    <img
+      src="/images/me.jpg"
+      alt="Aashish K"
+      className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0"
+    />
+  </div>
+</motion.div>
 
-                  {/* Subtle rX watermark */}
-                  <div className="absolute bottom-5 right-5 text-white/8 text-7xl font-black pointer-events-none select-none">
-                    rX
-                  </div>
-
-                  {/* Optional extra glow on hover */}
-                  <motion.div
-                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                    style={{
-                      background: "radial-gradient(circle at 30% 30%, rgba(239, 68, 68, 0.15), transparent 60%)",
-                    }}
-                  />
-                </motion.div>
 
               </div>
             </div>
@@ -436,16 +436,16 @@ xperiments.push({ ai: true, fearless: true });`}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.12, duration: 0.7 }}
                     className={`group relative rounded-2xl overflow-hidden bg-[#0f0f10] border transition-all duration-500
-        ${p.isLatest
+                      ${p.isLatest
                         ? "border-red-500/50 shadow-2xl shadow-red-500/20 hover:border-red-500/70"
                         : "border-slate-800 hover:border-red-500/20"
                       }`}
-                      onClick={(e) => {
-                        if (p.id === "lab") {
-                          e.preventDefault();
-                          setShowLabModal(true);
-                        }
-                      }}
+                    onClick={(e) => {
+                      if (p.id === "lab") {
+                        e.preventDefault();
+                        setShowLabModal(true);
+                      }
+                    }}
                     whileHover={{ scale: 1.02 }}
                   >
                     {/* Latest Experiment badge — only on the special card */}
@@ -499,7 +499,7 @@ xperiments.push({ ai: true, fearless: true });`}
             </div>
           </section>
 
-       
+
 
 
           <section id="experience" className="py-32 md:py-40 border-t border-slate-800">
@@ -594,7 +594,7 @@ xperiments.push({ ai: true, fearless: true });`}
 
               </div>
 
-              
+
 
             </div>
           </section>
@@ -647,45 +647,45 @@ xperiments.push({ ai: true, fearless: true });`}
 
         </main>
         {/* LAB MODAL */}
-{showLabModal && (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[999]"
-    onClick={() => setShowLabModal(false)} // close on background click
-  >
-    <motion.div
-      initial={{ scale: 0.9, opacity: 0, y: 20 }}
-      animate={{ scale: 1, opacity: 1, y: 0 }}
-      exit={{ scale: 0.9, opacity: 0, y: 20 }}
-      transition={{ duration: 0.25 }}
-      className="bg-[#0f0f12] border border-slate-800 rounded-2xl p-8 w-[90%] max-w-lg text-center shadow-xl"
-      onClick={(e) => e.stopPropagation()} // prevents closing when clicking inside modal
-    >
-      {/* Title */}
-      <h2 className="text-3xl font-bold text-white mb-3">
-        AI Agent Research
-      </h2>
+        {showLabModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[999]"
+            onClick={() => setShowLabModal(false)} // close on background click
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ duration: 0.25 }}
+              className="bg-[#0f0f12] border border-slate-800 rounded-2xl p-8 w-[90%] max-w-lg text-center shadow-xl"
+              onClick={(e) => e.stopPropagation()} // prevents closing when clicking inside modal
+            >
+              {/* Title */}
+              <h2 className="text-3xl font-bold text-white mb-3">
+                AI Agent Research
+              </h2>
 
-      {/* Subtitle */}
-      <p className="text-slate-400 text-base leading-relaxed mb-6">
-        Research & small experiments with autonomous behaviors, agent loops, and minimal system design.
-      </p>
+              {/* Subtitle */}
+              <p className="text-slate-400 text-base leading-relaxed mb-6">
+                Research & small experiments with autonomous behaviors, agent loops, and minimal system design.
+              </p>
 
-      {/* Links (optional) */}
-      <div className="flex flex-col items-center gap-3">
-        
-        <button
-          onClick={() => setShowLabModal(false)}
-          className="text-slate-500 hover:text-white text-sm mt-4"
-        >
-          Close
-        </button>
-      </div>
-    </motion.div>
-  </motion.div>
-)}
+              {/* Links (optional) */}
+              <div className="flex flex-col items-center gap-3">
+
+                <button
+                  onClick={() => setShowLabModal(false)}
+                  className="text-slate-500 hover:text-white text-sm mt-4"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
 
         {/* FOOTER – clean, tiny, confident */}
         <footer className="py-12 border-t border-slate-800">
@@ -710,6 +710,6 @@ xperiments.push({ ai: true, fearless: true });`}
       </div>
     </div>
 
-    
+
   );
 }

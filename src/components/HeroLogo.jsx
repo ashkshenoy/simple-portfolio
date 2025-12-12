@@ -13,11 +13,10 @@ export default function HeroLogo() {
   >
         {/* SVG version so we can animate the X stroke */}
         <motion.svg
-  width="550"
-  height="550"
   viewBox="0 0 550 550"
+  className="w-full h-auto"
   fill="none"
-  className="drop-shadow-2xl"
+ 
   initial="hidden"
   animate="visible"
 >
