@@ -355,7 +355,7 @@ xperiments.push({ ai: true, fearless: true });`}
     ))}
 </motion.div>
 {/* Load all button — mobile only */}
-<div className="mt-10 md:hidden">
+<div className="mt-10 ">
   {!showAll && (
     <button
       onClick={() => setShowAll(true)}
