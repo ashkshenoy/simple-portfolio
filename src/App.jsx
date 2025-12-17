@@ -343,10 +343,10 @@ xperiments.push({ ai: true, fearless: true });`}
   className="mt-12 flex flex-wrap justify-center gap-8 md:gap-10"
 >
   {[
-    "React", "TypeScript", "PostgreSQL", "Angular",
+    "React", "JavaScript", "PostgreSQL", "Angular",
     "Java", "Spring Boot", "Python", "Kafka",
     "Spring", "Claude", "TailwindCSS",
-    "MongoDB", "OracleDB",
+    "MongoDB", "OracleDB", "TypeScript",
     "Docker", "Netlify", "Railway", "Vercel", "AWS", "Github"
   ]
     .slice(0, showAll ? undefined : MOBILE_VISIBLE_COUNT)

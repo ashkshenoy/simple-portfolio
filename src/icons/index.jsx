@@ -18,6 +18,26 @@ export function ReactIcon({ className = "" }) {
   );
 }
 
+export function JavaScriptIcon({ className = "" }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {/* J */}
+      <path d="M7 4 v11 c0 2 -1 3 -3 3" />
+      {/* S */}
+      <path d="M17 6 c-2 -2 -6 -1 -6 2 c0 4 6 2 6 6 c0 3 -4 4 -6 2" />
+    </svg>
+  );
+}
+
+
 
 export function TypeScriptIcon({ className = "" }) {
   return (
