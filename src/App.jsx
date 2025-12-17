@@ -18,15 +18,14 @@ export default function App() {
 
     {
       id: "lab",
-      title: "AI Agent Research and Experiments",
-      subtitle: "Reaserch Mode",
-      thumbnail: "/images/lab.jpg",  // dark abstract or screenshot of your newest thing
-      link: "#projects", // or /lab if you ever make a collection
-      tags: ["Study", "AI Agents", "Python"], // ← add relevant tags
+      title: "RootX E-commerce",
+      subtitle: "Simple e-commerce app with Microservices architechture",
+      thumbnail: "/images/MS-ecommerce.png",  // dark abstract or screenshot of your newest thing
+      link: "https://github.com/ashkshenoy/root-x-microsercvices.git" , // or /lab if you ever make a collection
+      tags: ["Java", "Spring Boot", "Docker", "React"], // ← add relevant tags
 
       isLatest: true   // ← we’ll use this to style it differently
     },
-    { id: 1, title: "RootX E-commerce", subtitle: "Simple e-commerce app with Microservices architechture", thumbnail: "/images/MS-ecommerce.png", tags: ["Java", "Spring Boot", "Docker", "React"], link: "https://github.com/ashkshenoy/root-x-microsercvices.git" },
     { id: 2, title: "RootX To-Do", subtitle: "To-do with localstorage", thumbnail: "/images/minimal-todo.png", tags: ["React", "TailwindCSS"], link: "https://todo-app-five-alpha-22.vercel.app/" },
     { id: 3, title: "RootX Blog ", subtitle: "Blog with auth and auto summarization and tag generation capabilities", thumbnail: "/images/blog.png", tags: ["React", "Java", "Spring Boot", "Python"], link: "https://github.com/ashkshenoy/react-blog-frontend.git" },
     { id: 4, title: "RootX Boxing Coach", subtitle: "Practice boxing with intensity presets or customize your session", thumbnail: "/images/boxing.jpg", tags: ["React", "TailwindCSS"], link: "https://minimal-boxing-app.netlify.app/" },
