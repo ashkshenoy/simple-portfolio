@@ -13,7 +13,8 @@ import { i, link } from "framer-motion/client";
 
 export default function App() {
   const [showLabModal, setShowLabModal] = useState(false);
-
+  const [showAll, setShowAll] = useState(false);
+  const MOBILE_VISIBLE_COUNT = 8;
   const projects = [
 
     {
@@ -335,22 +336,37 @@ xperiments.push({ ai: true, fearless: true });`}
               </motion.h2>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="mt-12 flex flex-wrap justify-center gap-8 md:gap-10"
-              >
-                {[
-                  "React", "TypeScript", "TailwindCSS", "Angular",
-                  "Java", "Spring Boot", "Kafka", "Spring",
-                  "Python", "Claude",
-                  "PostgreSQL", "MongoDB", "OracleDB",
-                  "Docker", "Netlify", "Railway", "Vercel", "AWS", "Github"
-                ].map((name, i) => (
-                  <TechIcon key={name} name={name} delay={i * 0.05} />
-                ))}
-              </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ delay: 0.2 }}
+  className="mt-12 flex flex-wrap justify-center gap-8 md:gap-10"
+>
+  {[
+    "React", "TypeScript", "PostgreSQL", "Angular",
+    "Java", "Spring Boot", "Python", "Kafka",
+    "Spring", "Claude", "TailwindCSS",
+    "MongoDB", "OracleDB",
+    "Docker", "Netlify", "Railway", "Vercel", "AWS", "Github"
+  ]
+    .slice(0, showAll ? undefined : MOBILE_VISIBLE_COUNT)
+    .map((name, i) => (
+      <TechIcon key={name} name={name} delay={i * 0.05} />
+    ))}
+</motion.div>
+{/* Load all button — mobile only */}
+<div className="mt-10 md:hidden">
+  {!showAll && (
+    <button
+      onClick={() => setShowAll(true)}
+      className="text-slate-300 text-sm tracking-wide hover:text-white transition"
+    >
+      Load all →
+    </button>
+  )}
+</div>
+
+
             </div>
           </section>
 
@@ -512,7 +528,7 @@ xperiments.push({ ai: true, fearless: true });`}
                 className="text-center mb-16"
               >
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
-                  I’ve shipped
+                  Track Record 
                 </h2>
               </motion.div>
 
