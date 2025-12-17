@@ -680,16 +680,24 @@ xperiments.push({ ai: true, fearless: true });`}
             >
               {/* Title */}
               <h2 className="text-3xl font-bold text-white mb-3">
-                AI Agent Research
+                RootX E-commerce App
               </h2>
 
               {/* Subtitle */}
               <p className="text-slate-400 text-base leading-relaxed mb-6">
-                Research & small experiments with autonomous behaviors, agent loops, and minimal system design.
+                A simple e-commerce application built with a Microservices architecture using Java Spring Boot for the backend and React for the frontend. WIP!
               </p>
 
               {/* Links (optional) */}
               <div className="flex flex-col items-center gap-3">
+                <a
+                  href="https://github.com/ashkshenoy/root-x-microsercvices.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-slate-300 hover:text-white transition"
+                >
+                  View code on GitHub
+                </a>
 
                 <button
                   onClick={() => setShowLabModal(false)}
