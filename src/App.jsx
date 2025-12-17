@@ -467,7 +467,7 @@ xperiments.push({ ai: true, fearless: true });`}
                     {p.isLatest && (
                       <div className="absolute top-4 left-4 z-10">
                         <span className="px-3 py-1.5 bg-red-500/20 text-red-400 text-xs font-medium rounded-full border border-red-500/50 backdrop-blur-sm">
-                          Latest Experiment
+                          Latest Ongoning Experiment
                         </span>
                       </div>
                     )}
