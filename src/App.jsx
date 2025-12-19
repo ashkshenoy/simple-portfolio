@@ -640,7 +640,7 @@ xperiments.push({ ai: true, fearless: true });`}
                 transition={{ delay: 0.15 }}
                 className="mt-6 text-xl md:text-2xl text-slate-400"
               >
-                Have a project, idea, or just want to talk systems and minimalism?
+               Have a project or idea that needs stable systems, clean architecture, and thoughtful execution?
               </motion.p>
 
               <motion.div
