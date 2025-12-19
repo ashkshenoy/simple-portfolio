@@ -20,17 +20,17 @@ export default function App() {
     {
       id: "lab",
       title: "RootX E-commerce",
-      subtitle: "Simple e-commerce app with Microservices architechture",
+      subtitle: "Scalable e-commerce platform built on microservices — reliable, maintainable, and efficient.",
       thumbnail: "/images/MS-ecommerce.png",  // dark abstract or screenshot of your newest thing
       link: "https://github.com/ashkshenoy/root-x-microsercvices.git" , // or /lab if you ever make a collection
       tags: ["Java", "Spring Boot", "Docker", "React"], // ← add relevant tags
 
       isLatest: true   // ← we’ll use this to style it differently
     },
-    { id: 2, title: "RootX To-Do", subtitle: "To-do with localstorage", thumbnail: "/images/minimal-todo.png", tags: ["React", "TailwindCSS"], link: "https://todo-app-five-alpha-22.vercel.app/" },
-    { id: 3, title: "RootX Blog ", subtitle: "Blog with auth and auto summarization and tag generation capabilities", thumbnail: "/images/blog.png", tags: ["React", "Java", "Spring Boot", "Python"], link: "https://github.com/ashkshenoy/react-blog-frontend.git" },
-    { id: 4, title: "RootX Boxing Coach", subtitle: "Practice boxing with intensity presets or customize your session", thumbnail: "/images/boxing.jpg", tags: ["React", "TailwindCSS"], link: "https://minimal-boxing-app.netlify.app/" },
-    { id: 5, title: "RootX News Agent", subtitle: "AI agent delivering news at 9 AM with Telegram bot", thumbnail: "/images/news-agent.png", tags: ["Telegram", "Python"], link: "https://github.com/ashkshenoy/news-agent.git" },
+    { id: 2, title: "RootX To-Do", subtitle: "Minimal, persistent to-do — gets out of your way so you can focus.", thumbnail: "/images/minimal-todo.png", tags: ["React", "TailwindCSS"], link: "https://todo-app-five-alpha-22.vercel.app/" },
+    { id: 3, title: "RootX Blog ", subtitle: "Personal blog platform with secure auth and AI-powered summarization + smart tagging for better discoverability.", thumbnail: "/images/blog.png", tags: ["React", "Java", "Spring Boot", "Python"], link: "https://github.com/ashkshenoy/react-blog-frontend.git" },
+    { id: 4, title: "RootX Boxing Coach", subtitle: "Focused boxing timer — preset intensity rounds or custom sessions for effective solo training.", thumbnail: "/images/boxing.jpg", tags: ["React", "TailwindCSS"], link: "https://minimal-boxing-app.netlify.app/" },
+    { id: 5, title: "RootX News Agent", subtitle: "Daily curated news delivered automatically to Telegram every morning — stay informed without the noise.", thumbnail: "/images/news-agent.png", tags: ["Telegram", "Python"], link: "https://github.com/ashkshenoy/news-agent.git" },
     { id: 6, title: "Portfolio", subtitle: "Aashish + RootX", thumbnail: "/images/portfolio.png", tags: ["React", "TailwindCSS", "Vercel", "FramerMotion"], link: "https://github.com/ashkshenoy/simple-portfolio.git" },
   ];
   const [open, setOpen] = useState(false);
@@ -270,7 +270,8 @@ xperiments.push({ ai: true, fearless: true });`}
                     </p>
 
                     <p>
-                      If you value clarity over noise, performance over bloat, and work that actually ships — we’ll get along well.
+                      Clarity over noise, performance over bloat, and work that actually ships.
+                      If you're building something that needs to last, scale cleanly, and deliver real value without unnecessary complexity — let's talk.
                     </p>
 
                     {/* Resume Button */}
