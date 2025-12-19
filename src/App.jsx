@@ -309,7 +309,7 @@ xperiments.push({ ai: true, fearless: true });`}
   ">
                     <img
                       src="/images/me.jpg"
-                      alt="Aashish K"
+                      alt="Aashish K — Software Engineer behind Root Xperiments"
                       className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0"
                     />
                   </div>
