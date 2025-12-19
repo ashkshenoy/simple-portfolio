@@ -726,7 +726,7 @@ xperiments.push({ ai: true, fearless: true });`}
             </div>
 
             <p className="text-sm text-slate-500 text-center md:text-center">
-              © {new Date().getFullYear()} Root Xperiments — Built with clarity and curiosity.
+              © {new Date().getFullYear()} Root Xperiments — Built with clarity and curiosity by Aashish K.
             </p>
           </div>
         </footer>
