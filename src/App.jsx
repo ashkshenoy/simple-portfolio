@@ -36,6 +36,30 @@ export default function App() {
   const [open, setOpen] = useState(false);
 
   return (
+    <>
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Aashish K",
+            url: "https://rootxperiments.com",
+            jobTitle: "Software Engineer & Independent Developer",
+            worksFor: {
+              "@type": "Organization",
+              name: "Root Xperiments"
+            },
+            description: "Aashish K runs Root Xperiments, an independent practice building minimal software, exploring systems design, AI experiments, and documenting ongoing work.",
+            sameAs: [
+              "https://github.com/ashkshenoy",
+              "https://www.linkedin.com/in/aashish-k-926a63166",
+              "aashishkshenoy.wordpress.com",
+              "https://www.instagram.com/ashshenoyk/"
+            ]
+          })
+        }}
+      />
     <div className="min-h-screen flex flex-col relative overflow-hidden">
 
 
@@ -193,7 +217,7 @@ xperiments.push({ ai: true, fearless: true });`}
                         }
                       }}
                     >
-                      {"ROOT XPERIMENTS — A MINIMAL SYSTEMS + AI LAB".split("").map((char, index) => (
+                      {"ROOT XPERIMENTS — A MINIMAL SYSTEMS + AI LAB BY AASHISH K".split("").map((char, index) => (
                         <motion.span
                           key={index}
                           variants={{
@@ -734,6 +758,6 @@ xperiments.push({ ai: true, fearless: true });`}
       </div>
     </div>
 
-
+</>
   );
 }
