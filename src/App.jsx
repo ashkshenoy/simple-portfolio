@@ -53,7 +53,7 @@ export default function App() {
             description: "Aashish K runs Root Xperiments, an independent practice building minimal software, exploring systems design, AI experiments, and documenting ongoing work.",
             sameAs: [
               "https://github.com/ashkshenoy",
-              "https://www.linkedin.com/in/aashish-k-926a63166",
+              "www.linkedin.com/in/aashishk-rootx",
               "aashishkshenoy.wordpress.com",
               "https://www.instagram.com/ashshenoyk/"
             ]
@@ -743,7 +743,7 @@ xperiments.push({ ai: true, fearless: true });`}
               <a href="https://github.com/ashkshenoy/" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
                 <FaGithub className="w-6 h-6" />
               </a>
-              <a href="https://www.linkedin.com/in/aashish-k-926a63166/" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
+              <a href="www.linkedin.com/in/aashishk-rootx" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
                 <FaLinkedin className="w-6 h-6" />
               </a>
               {/* Add more if you want – Twitter/X, etc. */}
