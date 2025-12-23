@@ -217,7 +217,7 @@ xperiments.push({ ai: true, fearless: true });`}
                         }
                       }}
                     >
-                      {"ROOT XPERIMENTS — A MINIMAL SYSTEMS + AI LAB BY AASHISH K".split("").map((char, index) => (
+                      {"ROOT XPERIMENTS — A MINIMAL SYSTEMS + AI LAB".split("").map((char, index) => (
                         <motion.span
                           key={index}
                           variants={{
