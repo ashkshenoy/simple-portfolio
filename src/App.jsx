@@ -453,11 +453,10 @@ xperiments.push({ ai: true, fearless: true });`}
                 className="text-center mb-16 lg:mb-24"
               >
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
-                  Selected work
+                  Selected builds
                 </h2>
                 <p className="mt-4 text-slate-400 text-lg md:text-xl">
-                  Steady work. Quiet results.
-
+                  Practice and personal projects exploring real-world use cases.
                 </p>
               </motion.div>
 
@@ -553,7 +552,7 @@ xperiments.push({ ai: true, fearless: true });`}
                 className="text-center mb-16"
               >
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
-                  Track Record 
+                  Track record 
                 </h2>
               </motion.div>
 
