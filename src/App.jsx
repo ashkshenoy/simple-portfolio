@@ -54,14 +54,23 @@ export default function App() {
     link: "https://todo-app-five-alpha-22.vercel.app/"
   },
   {
+    id: "boxing-new",
+    title: "ShadowBox Smarter - Modern UI (v2)",
+    subtitle: "A refined rebuild of the boxing timer with modern interface, motion, and visual clarity.",
+    thumbnail: "/images/boxing-new.png",
+    tags: ["UI Showcase", "React", "TailwindCSS"],
+    link: "https://boxing-app-new.vercel.app/"
+  },
+
+  {
     id: "boxing",
-    title: "PunchMate",
-    subtitle: "Focused boxing timer — preset intensity rounds or custom sessions for effective solo training.",
-    thumbnail: "/images/boxing-app.png",
+    title: "ShadowBox Smarter - Classic (v1)",
+    subtitle: "A minimal, function-first boxing timer built for effective solo training.",
+    thumbnail: "/images/boxing-old.png",
     tags: ["Functional", "React", "TailwindCSS"],
     link: "https://minimal-boxing-app.netlify.app/"
   },
-
+  
   // 🧠 BACKEND / AI / SYSTEMS
   {
     id: "store",
