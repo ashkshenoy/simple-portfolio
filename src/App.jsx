@@ -319,14 +319,14 @@ xperiments.push({ ai: true, fearless: true });`}
                       href="#projects"
                       className="w-full sm:w-auto px-8 py-4 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-lg font-medium text-center"
                     >
-                      View Projects →
+                      View Projects → 
                     </a>
 
                     <a
                       href="#contact"
                       className="w-full sm:w-auto px-8 py-4 border border-slate-600 text-white rounded-lg hover:bg-white/10 transition text-lg font-medium text-center"
                     >
-                      Work With Me →
+                      Work With Me → 
                     </a>
 
                   </div>
