@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaMedium, FaWordpress, FaInstagram } from "react-icons/fa";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import HeroLogo from "./components/HeroLogo.jsx";
