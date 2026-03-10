@@ -306,32 +306,31 @@ xperiments.push({ ai: true, fearless: true });`}
                 </div>
 
                 {/* CTA BUTTONS — CENTERED UNDER BOTH COLUMNS */}
-                <motion.div
+               <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.7 }}
                   className="order-3 lg:order-3 col-span-1 lg:col-span-2 
-                   flex justify-center mt-8"
+                  flex justify-center mt-8 w-full"
                 >
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                    
                     <a
                       href="#projects"
-                      className="px-8 py-4 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-lg font-medium text-center"
+                      className="w-full sm:w-auto px-8 py-4 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-lg font-medium text-center"
                     >
                       View Projects →
                     </a>
 
-                   <a
-                    href="#contact"
-                    className="px-8 py-4 border border-slate-600 text-white rounded-lg hover:bg-white/10 transition text-lg font-medium text-center"
-                  >
-                    Work With Me →
-                  </a>
-
+                    <a
+                      href="#contact"
+                      className="w-full sm:w-auto px-8 py-4 border border-slate-600 text-white rounded-lg hover:bg-white/10 transition text-lg font-medium text-center"
+                    >
+                      Work With Me →
+                    </a>
 
                   </div>
                 </motion.div>
-
               </div>
             </div>
           </section>
