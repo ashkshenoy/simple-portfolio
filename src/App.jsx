@@ -124,7 +124,8 @@ export default function App() {
               "https://github.com/ashkshenoy",
               "www.linkedin.com/in/aashishk-rootx",
               "aashishkshenoy.wordpress.com",
-              "https://www.instagram.com/ashshenoyk/"
+              "https://www.instagram.com/ashshenoyk/",
+              "https://medium.com/@aashishkrd1"
             ]
           })
         }}
@@ -815,6 +816,16 @@ xperiments.push({ ai: true, fearless: true });`}
               <a href="https://www.linkedin.com/in/aashishkshenoy" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
                 <FaLinkedin className="w-6 h-6" />
               </a>
+              <a href="https://medium.com/@aashishkrd1" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
+                <FaMedium className="w-6 h-6" />
+              </a>
+              <a href="https://aashishkshenoy.wordpress.com" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
+                <FaWordpress className="w-6 h-6" />
+              </a>
+              <a href="https://www.instagram.com/ashshenoyk/" target="_blank" rel="noopener" className="text-slate-500 hover:text-white transition">
+                <FaInstagram className="w-6 h-6" />
+              </a>
+              
               {/* Add more if you want – Twitter/X, etc. */}
             </div>
 
