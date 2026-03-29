@@ -440,10 +440,10 @@ xperiments.push({ ai: true, fearless: true });`}
 >
   {[
     "React", "JavaScript", "PostgreSQL", "Angular",
-    "Java", "Spring Boot", "Python", "Kafka",
-    "Spring", "Claude", "TailwindCSS",
-    "MongoDB", "OracleDB", "TypeScript",
-    "Docker", "Netlify", "Railway", "Vercel", "AWS", "Github"
+    "Java", "Spring Boot", "Python",
+    "TailwindCSS",
+    "MongoDB", "TypeScript",
+    "Docker", "Vercel"
   ]
     .slice(0, showAll ? undefined : MOBILE_VISIBLE_COUNT)
     .map((name, i) => (
