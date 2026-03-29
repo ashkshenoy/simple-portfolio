@@ -639,7 +639,7 @@ xperiments.push({ ai: true, fearless: true });`}
                   className="text-center"
                 >
                   <div className="text-6xl md:text-7xl font-bold text-red-500 mb-4">
-                    6+ yrs
+                    7+ yrs
                   </div>
                   <p className="text-xl text-white">Building across 2+ companies</p>
                   <p className="text-slate-400 mt-3">
